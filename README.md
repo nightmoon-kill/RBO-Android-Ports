@@ -7,6 +7,15 @@
 The whole thing was vibe-coded using Codex.
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english) 
+
+**Latest APK: [RBO Android 0.5.2 · ARM64](downloads/RBO-Android-0.5.2-ARM64.apk?raw=true)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
+
+SHA-256: `2c08c144ce4b69011630d9224df516d18c599b8ae03518015c00ab8f17df990b`
+
+ไฟล์ APK 0.5.2 เป็น build จากแชตก่อนหน้า ซอร์สโค้ดใน repo ยังเป็นรุ่น 0.4 และยังไม่ได้อัปเดตให้ตรงกับ APK นี้
+
+The 0.5.2 APK is the build produced in the earlier chat. The source in this repository remains at 0.4 and has not yet been updated to match this APK.
+
 ## ภาษาไทย
 
 พอร์ตเวอร์ชันทดลองสำหรับเล่น **Ragnarok Battle Offline Expansion 3** บน Android ที่ใช้ ARM64 โปรเจกต์นี้ต่อยอดจากพอร์ต iOS ของ [RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) ตัว APK ต้องใช้ไฟล์เกมต้นฉบับที่คุณเป็นเจ้าของ
