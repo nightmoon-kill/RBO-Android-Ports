@@ -2,7 +2,7 @@
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english) · [Build from source](Android/README.md)
 
-[**Download Android APK v0.4 (ARM64)**](https://github.com/nightmoon-kill/RBO-Android-Ports/raw/refs/heads/main/downloads/RBO-Odin3-Android-0.4-ARM64.apk)
+[**Download Android APK**]([[https://github.com/nightmoon-kill/RBO-Android-Ports/raw/refs/heads/main/downloads/RBO-Odin3-Android-0.4-ARM64.apk](https://github.com/nightmoon-kill/RBO-Android-Ports/releases)](https://github.com/nightmoon-kill/RBO-Android-Ports/releases))
 
 ## ภาษาไทย
 
