@@ -4,6 +4,8 @@
 <img width="2340" height="1080" alt="Screenshot_20261118_165639" src="https://github.com/user-attachments/assets/7d5a5a4c-22c0-40b5-a590-5580e69ab4b4" />
 <img width="2340" height="1080" alt="Screenshot_20261118_165703" src="https://github.com/user-attachments/assets/85c1434f-5556-447e-a8b8-8317150e2f1f" />
 
+The whole thing was vibe-coded using Codex.
+
 [ภาษาไทย](#ภาษาไทย) · [English](#english) 
 ## ภาษาไทย
 
