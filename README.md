@@ -6,7 +6,7 @@
 
 ## ภาษาไทย
 
-พอร์ตทดลองสำหรับเล่น **Ragnarok Battle Offline Expansion 3** บน Android 9 ขึ้นไปที่ใช้ ARM64 เช่น AYN Odin 3 โปรเจกต์นี้ต่อยอดจากพอร์ต iOS ของ [RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) ตัว APK ต้องใช้ไฟล์เกม Windows จากชุดเกมของคุณเอง
+พอร์ตเวอร์ชันทดลองสำหรับเล่น **Ragnarok Battle Offline Expansion 3** บน Android ที่ใช้ ARM64 โปรเจกต์นี้ต่อยอดจากพอร์ต iOS ของ [RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) ตัว APK ต้องใช้ไฟล์เกมต้นฉบับที่คุณเป็นเจ้าของ
 
 ### วิธีติดตั้งและเล่น
 
@@ -24,7 +24,7 @@
 
 ## English
 
-An experimental **Ragnarok Battle Offline Expansion 3** port for ARM64 devices running Android 9 or later, including handhelds such as the AYN Odin 3. It builds on the [RBOios/RBOFFios iOS port](https://github.com/RBOios/RBOFFios). The APK requires your own Windows game files.
+An experimental **Ragnarok Battle Offline Expansion 3** port for ARM64 devices running Android 9 or later. It builds on the [RBOios/RBOFFios iOS port](https://github.com/RBOios/RBOFFios). The APK requires your own Windows game files.
 
 ### Install and play
 
