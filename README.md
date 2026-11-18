@@ -2,8 +2,6 @@
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english) · [Build from source](Android/README.md)
 
-[**Download Android APK**]([[https://github.com/nightmoon-kill/RBO-Android-Ports/raw/refs/heads/main/downloads/RBO-Odin3-Android-0.4-ARM64.apk](https://github.com/nightmoon-kill/RBO-Android-Ports/releases)](https://github.com/nightmoon-kill/RBO-Android-Ports/releases))
-
 ## ภาษาไทย
 
 พอร์ตเวอร์ชันทดลองสำหรับเล่น **Ragnarok Battle Offline Expansion 3** บน Android ที่ใช้ ARM64 โปรเจกต์นี้ต่อยอดจากพอร์ต iOS ของ [RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) ตัว APK ต้องใช้ไฟล์เกมต้นฉบับที่คุณเป็นเจ้าของ
