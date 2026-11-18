@@ -20,8 +20,12 @@ static uint32_t vt_graph, vt_mc, vt_mev, vt_mpos, vt_aud, vt_vw, vt_seek, vt_bv;
 static uint32_t graph_obj=0, mc_obj=0, mev_obj=0, mpos_obj=0, aud_obj=0, vw_obj=0, seek_obj=0, bv_obj=0;
 static uint32_t ev_handle=0;
 extern int g_cur_idx;
-void bgm_host_play(const char *path,int volume);   /* platform hooks (weak defaults in main.c) */
+void bgm_host_play(const char *path,int volume);
 void bgm_host_stop(void);
+#if defined(__ANDROID__) && defined(RBO_LIBRARY)
+void bgm_host_pause(void);
+void bgm_host_volume(int volume);
+#endif
 /* provided by dx.c / win.c */
 void dx_host_submit(const uint32_t *bgra,int w,int h);
 void dx_movie_audio_push(const float *interleaved,int frames);
@@ -159,6 +163,9 @@ static void d_qi(void){
     if(A(2)) wr32(A(2),obj); RET(0);
 }
 static void g_RenderFile(void){
+#if defined(__ANDROID__) && defined(RBO_LIBRARY)
+    bgm_host_stop();
+#endif
     wide_to_ascii(A(1),g_bgm.path,sizeof g_bgm.path);
     fprintf(stderr,"[DShow] RenderFile \"%s\"\n",g_bgm.path);
     if(is_movie_path(g_bgm.path)){
@@ -173,7 +180,14 @@ static void mc_Run(void){
     }
     g_bgm.playing=1; fprintf(stderr,"[DShow] Run  (%s) vol=%d\n",g_bgm.path,g_bgm.volume); bgm_host_play(g_bgm.path,g_bgm.volume); RET(0);
 }
-static void mc_Pause(void){ if(mv.open){ mv.paused=1; RET(0); return; } g_bgm.playing=0; RET(0); }
+static void mc_Pause(void){
+    if(mv.open){ mv.paused=1; RET(0); return; }
+    g_bgm.playing=0;
+#if defined(__ANDROID__) && defined(RBO_LIBRARY)
+    bgm_host_pause();
+#endif
+    RET(0);
+}
 static void mc_Stop(void){
     if(mv.open){ mv.running=0; mv.paused=0; mv.last_us=0; g_bgm.playing=0; dx_movie_audio_clear(); fprintf(stderr,"[DShow] Stop (movie at %.2fs)\n",movie_time()); RET(0); return; }
     g_bgm.playing=0; fprintf(stderr,"[DShow] Stop\n"); bgm_host_stop(); RET(0);
@@ -206,7 +220,11 @@ static void mev_Wait(void){         /* (this, long timeout, long *code) */
 }
 static void mev_SetNotifyWindow(void){ mv.notify_hwnd=A(1); mv.notify_msg=A(2); mv.notify_lparam=A(3); RET(0); }
 static void aud_put_Volume(void){
-    g_bgm.volume=(int)A(1); int v=g_bgm.volume; mv.gain=(v<=-10000)?0.0:pow(10.0,(v>0?0:v)/2000.0); RET(0);
+    g_bgm.volume=(int)A(1); int v=g_bgm.volume; mv.gain=(v<=-10000)?0.0:pow(10.0,(v>0?0:v)/2000.0);
+#if defined(__ANDROID__) && defined(RBO_LIBRARY)
+    if(!mv.open) bgm_host_volume(v);
+#endif
+    RET(0);
 }
 static void aud_get_Volume(void){ if(A(1)) wr32(A(1),(uint32_t)g_bgm.volume); RET(0); }
 /* IMediaSeeking (100 ns units) */

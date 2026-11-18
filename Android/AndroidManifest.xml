@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nakpaaiyaa.rbo" android:versionCode="4" android:versionName="0.4">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="34" />
+    <uses-feature android:name="android.hardware.gamepad" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <application android:label="RBO Android" android:icon="@drawable/rbo_icon" android:theme="@style/AppTheme"
+        android:allowBackup="false" android:extractNativeLibs="true"
+        android:enableOnBackInvokedCallback="false">
+        <activity android:name=".LauncherActivity" android:exported="true"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ControlsActivity" android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity android:name=".GameActivity" android:exported="false" android:process=":game"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" />
+    </application>
+</manifest>

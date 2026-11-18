@@ -13,8 +13,10 @@ uint32_t pe_load(const char *path);
 void rbo_install_hooks(void);
 void rbo_hookcheck_report(void);
 
+#if !defined(__ANDROID__) || !defined(RBO_LIBRARY)
 void bgm_host_play(const char *path,int volume){ fprintf(stderr,"[bgm] play %s (vol %d)\n",path,volume); }
 void bgm_host_stop(void){ fprintf(stderr,"[bgm] stop\n"); }
+#endif
 static char g_frame_dir[256]="/tmp/rbo_frames";
 void present_frame_file(const char *name,const uint8_t *pix,int w,int h,int pitch,int bpp,uint32_t rm,uint32_t gm,uint32_t bm){
     FILE *f=fopen(name,"wb"); if(!f) return;

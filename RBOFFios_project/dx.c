@@ -607,11 +607,19 @@ static void ds_CreateSoundBuffer(void){
 }
 static void dsb_Lock(void){ /* (this, off, bytes, p1*, b1*, p2*, b2*, flags) */
     SBuf *b=sb_of(A(0)); uint32_t off=A(1), n=A(2);
-    if(A(7)&2) n=b->size; if(A(7)&1) off=(uint32_t)cur_pos(b);
+    if(A(7)&2){ off=0; n=b->size; }
+    else if(A(7)&1) off=(uint32_t)cur_pos(b);
     static int lk_env=-1; if(lk_env<0) lk_env=getenv("RBO_DSTRACE")!=NULL;
     if(b->nnotify&&lk_env){ static int lc=0; if(lc++<40) fprintf(stderr,"[DSound] frame %d Lock id=%d off=%u bytes=%u flags=%u size=%u pos=%.0f\n",g_frames,(int)(b-SB),off,n,A(7),b->size,cur_pos(b)); }
-    if(off>b->size) off=0; if(off+n>b->size) n=b->size-off;
-    wr32(A(3),b->buf+off); wr32(A(4),n); if(A(5))wr32(A(5),0); if(A(6))wr32(A(6),0); RET(0);
+    if(off>=b->size) off=0;
+    if(n>b->size) n=b->size;
+    uint32_t first=b->size-off;
+    if(first>n) first=n;
+    uint32_t second=(A(5)&&A(6))?n-first:0;
+    wr32(A(3),b->buf+off); wr32(A(4),first);
+    if(A(5)) wr32(A(5),second?b->buf:0);
+    if(A(6)) wr32(A(6),second);
+    RET(0);
 }
 static void dsb_Play(void){ SBuf *b=sb_of(A(0)); if(g_trace) fprintf(stderr,"[DSound] frame %d Play id=%d size=%u loop=%d\n",g_frames,(int)(b-SB),b->size,(int)(A(3)&1)); b->playing=1; b->looping=(A(3)&1)!=0; RET(0); }
 static void dsb_Stop(void){
@@ -675,6 +683,9 @@ void dsound_register(void){
     static hle_fn dn_impl[4]; dn_impl[0]=com_qi; dn_impl[1]=com_addref; dn_impl[2]=com_release; dn_impl[3]=dn_SetNotificationPositions;
     static Iface dn={"IDirectSoundNotify",4,dn_m,dn_impl};
     vt_ds=make_vtable(&ds); vt_dsb=make_vtable(&sb); vt_notify=make_vtable(&dn);
+    hle_register("DSOUND.dll","DirectSoundCreate",3,ds_Create);
+    hle_register("DSOUND.dll","DirectSoundCreate8",3,ds_Create);
+    hle_register("DSOUND.dll","Ordinal1",3,ds_Create);
     hle_register("DSOUND.dll","Ordinal11",3,ds_Create);
 }
 
