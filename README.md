@@ -1,7 +1,6 @@
 # Ragnarok Battle Offline · Android Port
 
-[ภาษาไทย](#ภาษาไทย) · [English](#english) · [Build from source](Android/README.md)
-
+[ภาษาไทย](#ภาษาไทย) · [English](#english) 
 ## ภาษาไทย
 
 พอร์ตเวอร์ชันทดลองสำหรับเล่น **Ragnarok Battle Offline Expansion 3** บน Android ที่ใช้ ARM64 โปรเจกต์นี้ต่อยอดจากพอร์ต iOS ของ [RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) ตัว APK ต้องใช้ไฟล์เกมต้นฉบับที่คุณเป็นเจ้าของ
