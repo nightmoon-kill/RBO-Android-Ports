@@ -2,9 +2,8 @@
 
 <img width="2340" height="1080" alt="Screenshot_20261127_165211" src="https://github.com/user-attachments/assets/6793a5d0-fc05-403b-b986-e1c2335aaecf" />
 <img width="2340" height="1080" alt="Screenshot_20261127_165221" src="https://github.com/user-attachments/assets/1c57f012-5119-41c7-ac85-2d25e7033d50" />
-<img width="2340" height="1080" alt="Screenshot_20261127_115428" src="https://github.com/user-attachments/assets/9ddb3db2-9888-4808-b824-8cd55e56baa1" />
 <img width="2340" height="1080" alt="Screenshot_20261127_115438" src="https://github.com/user-attachments/assets/32e46849-17de-4e9b-af8a-b9d255b464f5" />
-
+<img width="2340" height="1080" alt="Screenshot_20261127_154052" src="https://github.com/user-attachments/assets/f3cfa202-f027-463e-89bf-1a2643d013d9" />
 
 The whole thing was vibe-coded using Codex.
 
