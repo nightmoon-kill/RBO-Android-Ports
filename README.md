@@ -12,10 +12,6 @@ The whole thing was vibe-coded using Codex.
 
 **[Android 0.5.3 source and build instructions](Android/vulkan/README.md)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
 
-**Base APK: [RBO Android 0.5.2 · ARM64](downloads/RBO-Android-0.5.2-ARM64.apk?raw=true)**
-
-SHA-256: `2c08c144ce4b69011630d9224df516d18c599b8ae03518015c00ab8f17df990b`
-
 ซอร์ส 0.5.3 ครอบคลุมเมนูใหม่ ตัวเรนเดอร์ Vulkan และการสลับไดรเวอร์ Turnip สคริปต์ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
 
 The 0.5.3 source covers the new launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
