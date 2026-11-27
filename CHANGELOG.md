@@ -1,3 +1,27 @@
+# RBO Android 0.5.9
+
+## ภาษาไทย
+
+### เพิ่มจาก 0.5.7
+
+- **Save State / Load State 10 ช่อง** แตะไอคอนแผ่นดิสก์ระหว่างเล่นเพื่อเซฟกลางด่านหรือโหลดกลับไปยังจุดที่บันทึกไว้ แต่ละช่องแสดงเวลาเซฟ พร้อมถามยืนยันก่อนเซฟทับหรือโหลด
+- **ภาพย่อในช่องเซฟ** แอปจับเฉพาะภาพเกมและแสดงข้างเวลาเซฟเมื่อบันทึกสำเร็จ เซฟเดิมจาก 0.5.8 โหลดได้ตามเดิม และจะมีภาพย่อเมื่อเซฟลงช่องนั้นอีกครั้ง
+- **ไอคอนระหว่างเล่น** ปุ่ม Touch, Cheat, Move List และ Save State ใช้ไอคอนลายเส้นในกรอบจัตุรัสโปร่งใส
+- **ชื่อแอป** แสดงเป็น **RBO Android** ใต้ไอคอน ส่วนเวอร์ชัน **0.5.9** ยังแสดงในหน้าแรกของแอป
+
+ไฟล์ติดตั้งรองรับ ARM64 บน Android 9 ขึ้นไป และใช้แพ็กเกจกับลายเซ็นเดียวกับ 0.5.7 และ 0.5.8 สำหรับอัปเดตทับ
+
+## English
+
+### Changes since 0.5.7
+
+- **10 Save State / Load State slots.** Tap the floppy-disk icon during gameplay to save mid-stage or restore a saved point. Each slot shows its save time, and the app asks for confirmation before overwriting or loading a state.
+- **Save-state thumbnails.** A gameplay-only screenshot appears alongside the save time after a successful save. Existing 0.5.8 states can still be loaded and gain a thumbnail the next time you save to that slot.
+- **In-game icons.** Touch, Cheat, Move List, and Save State now use outline icons in transparent square buttons.
+- **App name.** Android displays **RBO Android** under the app icon. The app's home screen still shows version **0.5.9**.
+
+The ARM64 APK requires Android 9 or later and uses the same package ID and signing certificate as 0.5.7 and 0.5.8 for in-place updates.
+
 # RBO Android 0.5.7
 
 ## ภาษาไทย

@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -23,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -52,45 +52,39 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
     private final DisplayManager displays;
     private final FrameLayout gameFrame;
     private final Button movesButton;
+    private final Button stateButton;
+    private final SaveStateMenu saveStates;
     private MovePresentation panel;
     private MovePanel inline;
     private boolean listening;
 
-    private MoveListDisplay(Activity game, FrameLayout gameFrame, Button cheatButton) {
+    private MoveListDisplay(Activity game, FrameLayout gameFrame, Button touchButton, Button cheatButton,
+            SurfaceView surface) {
         this.game = game;
         this.gameFrame = gameFrame;
         displays = game.getSystemService(DisplayManager.class);
 
+        touchButton.setLayoutParams(HudIcons.position(touchButton, 0));
+        cheatButton.setLayoutParams(HudIcons.position(touchButton, 1));
+        HudIcons.apply(touchButton, HudIcons.Icon.TOUCH, "Toggle on-screen controls");
+        HudIcons.apply(cheatButton, HudIcons.Icon.CHEAT, "Cheat");
+
         movesButton = new Button(game);
-        movesButton.setText("Moves");
-        movesButton.setContentDescription("Open Move List");
-        movesButton.setTransformationMethod(cheatButton.getTransformationMethod());
-        movesButton.setTextColor(cheatButton.getTextColors());
-        movesButton.setTextSize(TypedValue.COMPLEX_UNIT_PX, cheatButton.getTextSize());
-        movesButton.setAlpha(cheatButton.getAlpha());
-        Drawable background = cheatButton.getBackground();
-        if (background != null && background.getConstantState() != null) {
-            movesButton.setBackground(background.getConstantState().newDrawable(game.getResources()).mutate());
-        }
-        movesButton.setPadding(cheatButton.getPaddingLeft(), cheatButton.getPaddingTop(),
-                cheatButton.getPaddingRight(), cheatButton.getPaddingBottom());
-        movesButton.setFocusable(false);
+        HudIcons.apply(movesButton, HudIcons.Icon.MOVES, "Open Move List");
         movesButton.setVisibility(View.GONE);
         movesButton.setOnClickListener(view -> showInline());
+        gameFrame.addView(movesButton, HudIcons.position(touchButton, 2));
 
-        FrameLayout.LayoutParams anchor = (FrameLayout.LayoutParams) cheatButton.getLayoutParams();
-        FrameLayout.LayoutParams buttonFrame = new FrameLayout.LayoutParams(anchor.width, anchor.height,
-                Gravity.TOP | Gravity.RIGHT);
-        buttonFrame.topMargin = anchor.topMargin;
-        buttonFrame.rightMargin = anchor.rightMargin + anchor.width
-                + Math.round(4 * game.getResources().getDisplayMetrics().density);
-        gameFrame.addView(movesButton, buttonFrame);
+        stateButton = new Button(game);
+        HudIcons.apply(stateButton, HudIcons.Icon.STATE, "Save or Load State");
+        gameFrame.addView(stateButton, HudIcons.position(touchButton, 3));
+        saveStates = new SaveStateMenu(game, stateButton, surface);
     }
 
-    public static void install(Activity game, FrameLayout gameFrame) {
+    public static void install(Activity game, FrameLayout gameFrame, Button touchButton, SurfaceView surface) {
         if (active != null) active.dispose();
         Button cheatButton = (Button) gameFrame.getChildAt(gameFrame.getChildCount() - 1);
-        active = new MoveListDisplay(game, gameFrame, cheatButton);
+        active = new MoveListDisplay(game, gameFrame, touchButton, cheatButton, surface);
     }
 
     public static void attach(Activity game) {
@@ -143,6 +137,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
             listening = false;
             displays.unregisterDisplayListener(this);
         }
+        saveStates.close();
         dismiss();
         hideInline();
         syncMovesButton();
@@ -150,7 +145,9 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
 
     private void dispose() {
         suspend();
+        saveStates.release();
         gameFrame.removeView(movesButton);
+        gameFrame.removeView(stateButton);
     }
 
     private void dismiss() {

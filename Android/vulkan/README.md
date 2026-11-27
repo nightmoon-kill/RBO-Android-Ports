@@ -1,4 +1,4 @@
-# RBO Android 0.5.7
+# RBO Android 0.5.9
 
 This build uses the original `RBO-Android-0.5.2-ARM64.apk` as its input. It keeps
 the original engine and assets, adds the Vulkan renderer and launcher menus, and
@@ -8,7 +8,8 @@ If a selected Turnip driver fails to initialize, the system Vulkan driver is tri
 first, then the original CPU renderer. The game log records the active driver.
 
 The Move List appears on a compatible secondary display. On a single screen,
-select **Moves** in-game and close the list with **×** or **Back**.
+select **Moves** in-game and close the list with **×** or **Back**. The disk
+icon opens the ten save-state slots with save times and gameplay thumbnails.
 
 The build uses the checked-in [0.5.2 APK](../../downloads/RBO-Android-0.5.2-ARM64.apk)
 and checks its SHA-256. On Linux x86-64, install OpenJDK, Python 3, CMake, Ninja, Android Platform
@@ -29,7 +30,7 @@ export APK_KEYSTORE_PASSWORD
 bash Android/vulkan/build.sh
 ```
 
-The output is `Android/vulkan/build/RBO-Android-0.5.7-Move-List-ARM64.apk`.
+The output is `Android/vulkan/build/RBO-Android-0.5.9-Save-State-ARM64.apk`.
 Supply your own signing material and compatible Turnip driver ZIPs.
 
 The bundled AdrenoTools source is from revision

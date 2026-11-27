@@ -10,11 +10,11 @@ The whole thing was vibe-coded using Codex.
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english) 
 
-**[Android 0.5.7 source and build instructions](Android/vulkan/README.md)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
+**[Android 0.5.9 source and build instructions](Android/vulkan/README.md)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
 
-ซอร์ส 0.5.7 เพิ่ม Move List สำหรับเครื่องจอเดียวและสองจอ และรวมเมนู ตัวเรนเดอร์ Vulkan และการสลับไดรเวอร์ Turnip สคริปต์ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
+ซอร์ส 0.5.9 เพิ่ม Move List สำหรับเครื่องจอเดียวและสองจอ และรวมเมนู ตัวเรนเดอร์ Vulkan และการสลับไดรเวอร์ Turnip สคริปต์ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
 
-The 0.5.7 source adds the Move List for single- and dual-screen devices and includes the launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
+The 0.5.9 source adds the Move List for single- and dual-screen devices and includes the launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
 
 
 ## ภาษาไทย

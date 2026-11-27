@@ -97,7 +97,8 @@ def patch_smali():
     anchor = "    invoke-static {p0, p1, v0}, Lcom/nakpaaiyaa/rbo/CheatMenu;->attach(Landroid/app/Activity;Landroid/widget/FrameLayout;Landroid/view/View;)V"
     game_code = replace_once(game_code, anchor, anchor + """
 
-    invoke-static {p0, p1}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->install(Landroid/app/Activity;Landroid/widget/FrameLayout;)V""")
+    iget-object v1, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->display:Landroid/view/SurfaceView;
+    invoke-static {p0, p1, v0, v1}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->install(Landroid/app/Activity;Landroid/widget/FrameLayout;Landroid/widget/Button;Landroid/view/SurfaceView;)V""")
     anchor = "    invoke-super {p0}, Landroid/app/Activity;->onDestroy()V"
     game_code = replace_once(game_code, anchor, """    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->release(Landroid/app/Activity;)V
 
@@ -166,7 +167,7 @@ def patch_smali():
 
 def patch_manifest(data):
     for old, new in (("com.nakpaaiyaa.rbo.perftst", "com.nakpaaiyaa.rbo.vulk052"),
-                     ("RBO Android", "RBO 0.5.7VK"), ("0.5.2", "0.5.7")):
+                     ("0.5.2", "0.5.9")):
         old, new = old.encode("utf-16le"), new.encode("utf-16le")
         assert len(old) == len(new)
         data = replace_once(data, old, new)
@@ -185,7 +186,7 @@ def patch_manifest(data):
                 name, = unpack_from("<I", manifest, attr + 4)
                 if name < len(resource_ids) and resource_ids[name] == 0x0101021B:
                     assert unpack_from("<I", manifest, attr + 16) == (17,)
-                    pack_into("<I", manifest, attr + 16, 23)
+                    pack_into("<I", manifest, attr + 16, 25)
                     updated += 1
         offset += size
     assert offset == len(manifest) and updated == 1

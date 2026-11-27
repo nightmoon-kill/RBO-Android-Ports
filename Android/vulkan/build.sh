@@ -13,7 +13,7 @@ shaders="$ndk/shader-tools/linux-x86_64/glslc"
 engine="$project/../../RBOFFios_project"
 native="$project/../native"
 base="$project/../../downloads/RBO-Android-0.5.2-ARM64.apk"
-output="$project/build/RBO-Android-0.5.7-Move-List-ARM64.apk"
+output="$project/build/RBO-Android-0.5.9-Save-State-ARM64.apk"
 mkdir -p build/classes build/settings-dex
 python3 assemble.py extract
 
@@ -43,7 +43,7 @@ common=(-std=gnu11 -O3 -fPIC -fvisibility=hidden -ffp-contract=off -fno-strict-a
     -c "$engine/d3d.c" -o build/d3d.o
 "$cc" "${common[@]}" -Wall -Wextra -Werror -shared -Wl,-z,max-page-size=16384 \
     -Wl,-soname,librbo_vulkan.so -Wl,--no-undefined -o build/librbo_vulkan.so \
-    -DRBO_VULKAN_DRIVERS=1 native/renderer_bridge.c native/vulkan_driver.c "$native/vulkan_raster.c" build/d3d.o \
+    -DRBO_VULKAN_DRIVERS=1 native/renderer_bridge.c native/save_state.c native/vulkan_driver.c "$native/vulkan_raster.c" build/d3d.o \
     -L"$project/build/original-libs" -Wl,--no-as-needed -l:librbo_android.so -l:librbo_core044.so \
     -ldl -lm
 
