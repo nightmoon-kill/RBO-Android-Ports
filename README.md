@@ -1,7 +1,7 @@
 # Ragnarok Battle Offline · Android Port
 
-<img width="2340" height="1080" alt="Screenshot_20261127_115455" src="https://github.com/user-attachments/assets/0f8839da-2ff7-4f6c-80e5-69384eaf5cbf" />
-<img width="2340" height="1080" alt="Screenshot_20261127_115418" src="https://github.com/user-attachments/assets/a9aa5c59-8e5a-49cf-a532-6842f56cb64c" />
+<img width="2340" height="1080" alt="Screenshot_20261127_165211" src="https://github.com/user-attachments/assets/6793a5d0-fc05-403b-b986-e1c2335aaecf" />
+<img width="2340" height="1080" alt="Screenshot_20261127_165221" src="https://github.com/user-attachments/assets/1c57f012-5119-41c7-ac85-2d25e7033d50" />
 <img width="2340" height="1080" alt="Screenshot_20261127_115428" src="https://github.com/user-attachments/assets/9ddb3db2-9888-4808-b824-8cd55e56baa1" />
 <img width="2340" height="1080" alt="Screenshot_20261127_115438" src="https://github.com/user-attachments/assets/32e46849-17de-4e9b-af8a-b9d255b464f5" />
 
