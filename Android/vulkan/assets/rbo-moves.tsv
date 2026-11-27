@@ -1,0 +1,126 @@
+# class, variant (- / M / F), move, input, optional unlock condition. Fields separated by tabs.
+# Command references: Ragnarok Battle Offline Wiki class pages, https://rbo.fandom.com/wiki/Classes
+Swordman	-	Fatal Blow	B (After Bash)	Bash (3) + Provoke (3)
+Swordman	-	Bash	↓↘→+B	Sword Mastery (3)
+Swordman	-	Magnum Break	↓↘→+A	Bash (3)
+Swordman	-	Provoke	↓↓+B
+Swordman	-	Endure	↓↓+A	Provoke (3)
+Swordman	-	Chain Attack 1	A A	AGI 10
+Swordman	-	Chain Attack 2	A A A	AGI 20
+Swordman	-	Tackle	→→+B	STR 20
+Swordman	M	Low Pierce	↓+B (airborne)	DEX 20
+Swordman	F	Aerial Bash	Bash (airborne)	Bash (1)
+Swordman	-	Chain Bash	Bash (during Bash)	DEX 20 + Bash (1)
+Swordman	-	Vital Force	C (just before a hit)	HP Recovery
+Archer	-	Arrow Crafting	D
+Archer	-	Charge Arrow	↓↘→ A	Improve Concentration (3)
+Archer	-	Double Strafe	↓↘→ B
+Archer	-	Arrow Shower	↓↓ B	Double Strafe (3)
+Archer	-	Improve Concentration	↓↓ A	Vulture's Eye (3)
+Archer	-	Chain Attack 1	A A	AGI 10
+Archer	-	Chain Attack 2	A A A	AGI 20
+Archer	-	Standing Shot	→ B
+Archer	-	Low Shot	↘ B
+Archer	-	Back Sliding	↓ D	AGI 30
+Archer	M	Shoulder Tackle	→→ A	STR 10
+Archer	M	Anti-Air Arrow	→→ B	DEX 30
+Archer	F	Ground-to-Air Arrow	→→ B	DEX 30
+Archer	F	Double Kick	↓↓ A (airborne)	STR 10
+Archer	F	Dash Kick	→→ A	DEX 20
+Archer	M	Air-to-Air Arrow	→ B (airborne)
+Archer	F	Air-to-Air Arrow	→ A (airborne)	DEX 10
+Archer	M	Low Air Shot	↓ B (airborne)	DEX 30
+Archer	F	Low Air Shot	→ B (airborne)
+Magician	-	Energy Coat	D, →→+B	Soul Strike (3)
+Magician	-	Napalm Beat	D, D
+Magician	-	Soul Strike	↓↓+A	Napalm Beat (3)
+Magician	-	Safety Wall	D, ↓↑+B	Soul Strike (3)
+Magician	-	Stone Curse	D, →→+A
+Magician	-	Fire Bolt	D, ↓↓+A
+Magician	-	Fire Ball	D, ←→+B	Fire Bolt (3)
+Magician	-	Fire Wall	↓↓+B	Fire Ball (3)
+Magician	-	Cold Bolt	D, ↓↓+B
+Magician	-	Frost Diver	D, ←→+A	Cold Bolt (3)
+Magician	-	Lightning Bolt	D, ↓↘→+A
+Magician	-	Thunder Storm	D, ↓↘→+B	Lightning Bolt (3)
+Magician	F	Air Dash	→→ (airborne)	AGI 10
+Magician	F	Staff Uppercut	→→+A	STR 5
+Magician	F	Lightning Palm	→→+B	STR 10 INT 10
+Magician	F	Aerial Staff Dive	(Air Dash) →+A	DEX 10
+Magician	F	Spinning Staff	→+B (also airborne)
+Magician	F	Napalm Geyser	↘+B
+Magician	M	Damascus Dagger	→→+A	STR 10
+Magician	M	Lightning Kick	→→+B	AGI 20 DEX 20
+Magician	M	Air Dash	→→ (airborne)	AGI 10
+Magician	M	Napalm Field	→+B
+Magician	M	Razor Cape	↘+B
+Merchant	-	Cart Revolution	↓↓+B (Cart)	Pushcart (3)
+Merchant	-	Crazy Uproar	↓↘→+B
+Merchant	-	Pushcart	↓↓+B (No Cart)	Enlarge Weight Limit (3)
+Merchant	-	Vending	↓↓+D (Cart)	Pushcart (3)
+Merchant	-	Mammonite	↓↓+A
+Merchant	-	Discount	D
+Merchant	-	Overcharge	↓↘→+A
+Merchant	-	Overcharge Finisher	Overcharge A	STR 20 + DEX 10
+Merchant	-	Drink A Potion	↓↘→+D
+Merchant	M	Chain Attack 1	A A	AGI 10
+Merchant	M	Ready Attack	→→+A	INT 10
+Merchant	M	Hip Attack	→→+B	STR 10 DEX 10
+Merchant	F	Chain Attack 1	A A	LUK 10
+Merchant	F	Rolling Over	→→+A	AGI 10
+Acolyte	-	Holy Light	↓↘→ B	Angelus (2) + Blessing (2)
+Acolyte	-	Heal	D, ↓↓ B
+Acolyte	-	Increase Agi	D, →→ A	Heal (3)
+Acolyte	-	Decrease Agi	D, ←← A	Increase Agi (3)
+Acolyte	-	Angelus	D, ↓↘→ B	Divine Protection (2)
+Acolyte	-	Blessing	D, ↓↓ A	Divine Protection (3)
+Acolyte	-	Pneuma	↓↓ A	Teleport(1)
+Acolyte	-	Teleport	↓↓ + B (also airborne)
+Acolyte	M	Chain Attack 1	A A	AGI 10
+Acolyte	M	Chain Attack 2	A A A	AGI 20
+Acolyte	M	Heal Bomb	Heal →(hold)+B	Heal 1 + INT 10
+Acolyte	M	Spin Palm Strike	→ →+B	STR 10 + DEX 10
+Acolyte	M	Dash Spin Palm Strike	→→ →+B	STR 10 + DEX 10
+Acolyte	M	Spin Heel Kick	→ →+A	DEX 5
+Acolyte	M	Dash Spin Heel Kick	→→ →+A	DEX 5
+Acolyte	M	Aerial Machine-gun Punch	(airborne) ↓↘ →+A	STR 10 + AGI 20
+Acolyte	F	Chain Attack 1	A A	DEX 5
+Acolyte	F	Chain Attack 2	A A A	STR 20 + DEX 10
+Acolyte	F	Grab Heal	Heal →+B	Heal + VIT 10
+Acolyte	F	Holy Home Run	→ →+B	STR 10
+Acolyte	F	Holy Hammer	→ →+A	INT 10
+Acolyte	F	Lunar Buster Lariat	A+B	STR 60
+Thief	-	Throw Sand	→→+B
+Thief	-	Back Slide	←+D during Evade	Improve Dodge (3)
+Thief	-	Stone Fling	↓↓+B (also airborne)	Throw Sand (3)
+Thief	-	Double Attack	↓↓+D	Back Slide (1)+ Hiding (3)
+Thief	-	Steal	↓↘→+A
+Thief	-	Hiding	D during Evade	Improve Dodge (1) + Steal (3)
+Thief	-	Envenom	↓↘→+B
+Thief	-	Detoxify	↓↓+A	Envenom (1)
+Thief	-	Chain Attack 1	A A	AGI 10
+Thief	-	Chain Attack 2	A A A	AGI 20
+Thief	-	Evade	D	Improve Dodge (1)
+Thief	-	Air Dash	→→ (airborne)	DEX 10
+Thief	-	Stealth Dash	→+D during Evade	AGI 10 + Improve Dodge (1)
+Thief	M	Down Hill Kick	↓↓+A (airborne)	STR 20 + AGI 20
+Thief	F	Down Hill Kick	↓↓+A (airborne)	AGI 30
+Novice	-	First Aid	D
+Novice	-	Play Dead	↓ D
+Novice	-	Chain Attack 1	A A	STR 20 + DEX 15 + AGI 10
+Novice	-	Chain Attack 2	A A A	STR 25 + DEX 20 + AGI 20
+Novice	-	Dash	→→	AGI 20
+Novice	-	Random Emoticon	↓↘→ A
+Novice	-	Aura Blast	↓↓ A	INT 50
+Novice	-	Barbarian Swing	→→ B	STR 25
+Novice	M	Rotation Hurl	Barbarian Swing →→	STR 30
+Novice	M	100 M Panic	→→ A	AGI 40
+Novice	-	Back Step	↓↓ B
+Novice	M	Jump Kick	↓↘→ A (airborne)	DEX 20
+Novice	M	Rocket Jump	↘ B	DEX 20
+Novice	M	Super Rocket Jump	↓↘→ B (airborne)	DEX 30
+Novice	F	Aura Blade	Barbarian Swing →→	STR 25 + INT 20
+Novice	F	Flying Hip Press	↓↘→ B	STR 25 + DEX 20
+Novice	F	Rolling Over	→→ A	AGI 40 + DEX 5
+Novice	F	Comet Air Dash	→→ B (airborne)	INT 20 + DEX 30
+Novice	F	Swimming in The Air	→ B (airborne)

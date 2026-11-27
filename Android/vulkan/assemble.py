@@ -76,14 +76,97 @@ def patch_smali():
     launcher.write_text(code)
     game = smali / "GameActivity.smali"
     anchor = ".method private startGame()V\n    .locals 5"
-    game.write_text(replace_once(game.read_text(), anchor, anchor + """
+    game_code = replace_once(game.read_text(), anchor, anchor + """
 
-    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/RendererSettings;->configureForGame(Landroid/app/Activity;)V"""))
+    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/RendererSettings;->configureForGame(Landroid/app/Activity;)V""")
+    anchor = "    invoke-super {p0}, Landroid/app/Activity;->onResume()V"
+    game_code = replace_once(game_code, anchor, anchor + """
+
+    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->attach(Landroid/app/Activity;)V""")
+    anchor = "    invoke-super {p0}, Landroid/app/Activity;->onPause()V"
+    game_code = replace_once(game_code, anchor, """    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->detach(Landroid/app/Activity;)V
+
+""" + anchor)
+    game_code = replace_once(game_code,
+        '.source "GameActivity.java"',
+        '.source "GameActivity.java"\n\n.implements Lcom/nakpaaiyaa/rbo/MoveListDisplay$GameHost;')
+    game_code = replace_once(game_code, "# instance fields", """# instance fields
+.field private movesOpen:Z
+""")
+
+    anchor = "    invoke-static {p0, p1, v0}, Lcom/nakpaaiyaa/rbo/CheatMenu;->attach(Landroid/app/Activity;Landroid/widget/FrameLayout;Landroid/view/View;)V"
+    game_code = replace_once(game_code, anchor, anchor + """
+
+    invoke-static {p0, p1}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->install(Landroid/app/Activity;Landroid/widget/FrameLayout;)V""")
+    anchor = "    invoke-super {p0}, Landroid/app/Activity;->onDestroy()V"
+    game_code = replace_once(game_code, anchor, """    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->release(Landroid/app/Activity;)V
+
+""" + anchor)
+    anchor = ".method public onBackPressed()V\n    .locals 3"
+    game_code = replace_once(game_code, anchor, anchor + """
+
+    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/MoveListDisplay;->closeInline(Landroid/app/Activity;)Z
+    move-result v0
+    if-eqz v0, :moves_not_open
+    return-void
+    :moves_not_open""")
+    anchor = """    :cond_3
+    xor-int/lit8 v1, v0, 0x1
+
+    invoke-static {v1}, Lcom/nakpaaiyaa/rbo/NativeCore;->setPaused(Z)V"""
+    game_code = replace_once(game_code, anchor, """    :cond_3
+    iget-boolean v1, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->movesOpen:Z
+    if-eqz v1, :apply_pause
+    const/4 v0, 0x0
+    :apply_pause
+    xor-int/lit8 v1, v0, 0x1
+
+    invoke-static {v1}, Lcom/nakpaaiyaa/rbo/NativeCore;->setPaused(Z)V""")
+    for signature, super_label in (
+        (".method public dispatchKeyEvent(Landroid/view/KeyEvent;)Z\n    .locals 6", "cond_4"),
+        (".method public onGenericMotionEvent(Landroid/view/MotionEvent;)Z\n    .locals 9", "cond_0"),
+    ):
+        game_code = replace_once(game_code, signature, signature + f"""
+
+    iget-boolean v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->movesOpen:Z
+    if-nez v0, :{super_label}""")
+
+    game_code += """
+
+.method public setMoveListOpen(Z)Z
+    .locals 1
+
+    if-eqz p1, :apply
+    iget-boolean v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->closing:Z
+    if-nez v0, :unavailable
+    iget-boolean v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->started:Z
+    if-eqz v0, :unavailable
+    iget-boolean v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->resumed:Z
+    if-eqz v0, :unavailable
+    iget-boolean v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->hasSurface:Z
+    if-eqz v0, :unavailable
+
+    iget-object v0, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->touchDirections:Lcom/nakpaaiyaa/rbo/TouchDirectionPad;
+    invoke-virtual {v0}, Lcom/nakpaaiyaa/rbo/TouchDirectionPad;->reset()V
+    invoke-direct {p0}, Lcom/nakpaaiyaa/rbo/GameActivity;->clearAllKeys()V
+
+    :apply
+    iput-boolean p1, p0, Lcom/nakpaaiyaa/rbo/GameActivity;->movesOpen:Z
+    invoke-direct {p0}, Lcom/nakpaaiyaa/rbo/GameActivity;->syncGameState()V
+    const/4 v0, 0x1
+    return v0
+
+    :unavailable
+    const/4 v0, 0x0
+    return v0
+.end method
+"""
+    game.write_text(game_code)
 
 
 def patch_manifest(data):
     for old, new in (("com.nakpaaiyaa.rbo.perftst", "com.nakpaaiyaa.rbo.vulk052"),
-                     ("RBO Android", "RBO 0.5.3VK"), ("0.5.2", "0.5.3")):
+                     ("RBO Android", "RBO 0.5.7VK"), ("0.5.2", "0.5.7")):
         old, new = old.encode("utf-16le"), new.encode("utf-16le")
         assert len(old) == len(new)
         data = replace_once(data, old, new)
@@ -102,7 +185,7 @@ def patch_manifest(data):
                 name, = unpack_from("<I", manifest, attr + 4)
                 if name < len(resource_ids) and resource_ids[name] == 0x0101021B:
                     assert unpack_from("<I", manifest, attr + 16) == (17,)
-                    pack_into("<I", manifest, attr + 16, 19)
+                    pack_into("<I", manifest, attr + 16, 23)
                     updated += 1
         offset += size
     assert offset == len(manifest) and updated == 1
@@ -131,6 +214,10 @@ def package():
             entry.extra = b""
             output.writestr(entry, data)
         output.write(build / "settings-dex/classes.dex", "classes3.dex", ZIP_STORED)
+        output.write(root / "assets/rbo-moves.tsv", "assets/rbo-moves.tsv")
+        for asset in sorted((root / "assets/move-backgrounds").iterdir()):
+            if asset.suffix in (".webp", ".txt"):
+                output.write(asset, f"assets/move-backgrounds/{asset.name}")
         for library in ("librbo_vulkan.so", "libadrenotools.so", "libhook_impl.so", "libmain_hook.so"):
             output.write(build / library, "lib/arm64-v8a/" + library, ZIP_STORED)
         output.write(root / "vendor/libadrenotools/LICENSE", "assets/licenses/libadrenotools.txt")

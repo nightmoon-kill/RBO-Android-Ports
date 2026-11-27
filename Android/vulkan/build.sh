@@ -13,7 +13,7 @@ shaders="$ndk/shader-tools/linux-x86_64/glslc"
 engine="$project/../../RBOFFios_project"
 native="$project/../native"
 base="$project/../../downloads/RBO-Android-0.5.2-ARM64.apk"
-output="$project/build/RBO-Android-0.5.3-ARM64.apk"
+output="$project/build/RBO-Android-0.5.7-Move-List-ARM64.apk"
 mkdir -p build/classes build/settings-dex
 python3 assemble.py extract
 

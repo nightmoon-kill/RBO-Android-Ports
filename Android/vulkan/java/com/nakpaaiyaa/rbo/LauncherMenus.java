@@ -36,7 +36,7 @@ public final class LauncherMenus {
             String name = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0).versionName;
             version.setText("Version " + name);
         } catch (PackageManager.NameNotFoundException ignored) {
-            version.setText("Version 0.5.3");
+            version.setText("Version 0.5.7");
         }
         root.addView(version, root.indexOfChild(play));
 

@@ -1,3 +1,25 @@
+# RBO Android 0.5.7
+
+## ภาษาไทย
+
+**RBO Android 0.5.7** เพิ่ม Move List สำหรับเครื่องจอเดียวและสองจอ เทียบกับรีลีส 0.5.3
+
+- **เครื่องสองจอ** แสดง Move List บนจอรองเมื่อ Android ตรวจพบจอที่รองรับ เล่นเกมต่อบนจอหลักได้ตามปกติ
+- **เครื่องจอเดียว** แตะ **Moves** ข้างปุ่ม Cheat เพื่อเปิดรายการและพักเกมชั่วคราว ปุ่ม Moves จะซ่อนระหว่างดูรายการเพื่อไม่ให้ทับช่องเลือกตัวละคร กด **×** หรือ **Back** เพื่อกลับไปเล่นต่อ
+- **ข้อมูลท่า** เลือกดูได้ครบทั้ง 7 อาชีพและสลับตัวละครชาย/หญิง รายการแสดงคำสั่งและเงื่อนไขค่าสถานะในหน้าเดียว พร้อมพื้นหลังซีเปียตามตัวละคร และแสดงข้อมูลสำหรับอ้างอิงระหว่างเล่น
+
+ไฟล์ติดตั้ง **ARM64** สำหรับ Android 9 ขึ้นไป ใช้แพ็กเกจและลายเซ็นเดียวกับ 0.5.3 จึงอัปเดตทับได้ ตัวแอปยังต้องใช้ไฟล์เกมเดิม
+
+## English
+
+**RBO Android 0.5.7** adds a Move List for single- and dual-screen devices since the 0.5.3 release.
+
+- **Dual-screen devices** show the Move List on a compatible secondary display detected by Android while gameplay continues on the main display.
+- **Single-screen devices** can tap **Moves** next to Cheat to open the list and pause the game. The Moves button stays hidden while the list is open so the character selector is unobstructed. Press **×** or **Back** to resume.
+- **Move reference** covers all seven classes and male/female variants. Commands and stat requirements appear on one screen with sepia character backgrounds.
+
+The **ARM64** APK requires Android 9 or later. It uses the same package ID and signing certificate as 0.5.3 for an in-place update. Original game files are still required.
+
 # RBO Android 0.5.3
 
 ## ภาษาไทย
