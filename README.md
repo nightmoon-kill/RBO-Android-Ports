@@ -1,8 +1,10 @@
 # Ragnarok Battle Offline · Android Port
 
-<img width="2340" height="1080" alt="Screenshot_20261118_165615" src="https://github.com/user-attachments/assets/dc142020-bac0-44d2-8fc8-e1fd3412e71b" />
-<img width="2340" height="1080" alt="Screenshot_20261118_165639" src="https://github.com/user-attachments/assets/7d5a5a4c-22c0-40b5-a590-5580e69ab4b4" />
-<img width="2340" height="1080" alt="Screenshot_20261118_165703" src="https://github.com/user-attachments/assets/85c1434f-5556-447e-a8b8-8317150e2f1f" />
+<img width="2340" height="1080" alt="Screenshot_20261127_115455" src="https://github.com/user-attachments/assets/0f8839da-2ff7-4f6c-80e5-69384eaf5cbf" />
+<img width="2340" height="1080" alt="Screenshot_20261127_115418" src="https://github.com/user-attachments/assets/a9aa5c59-8e5a-49cf-a532-6842f56cb64c" />
+<img width="2340" height="1080" alt="Screenshot_20261127_115428" src="https://github.com/user-attachments/assets/9ddb3db2-9888-4808-b824-8cd55e56baa1" />
+<img width="2340" height="1080" alt="Screenshot_20261127_115438" src="https://github.com/user-attachments/assets/32e46849-17de-4e9b-af8a-b9d255b464f5" />
+
 
 The whole thing was vibe-coded using Codex.
 
