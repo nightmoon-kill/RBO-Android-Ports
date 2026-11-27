@@ -16,9 +16,6 @@ The whole thing was vibe-coded using Codex.
 
 The 0.5.3 source covers the new launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
 
-ขั้นตอนด้านล่างอ้างอิง APK ฐาน 0.5.2 สำหรับ 0.5.3 ให้เข้า **Options → Import Game Folder** แล้วเลือก **Play**
-
-The steps below apply to the 0.5.2 base APK. On 0.5.3, open **Options → Import Game Folder** and then choose **Play**.
 
 ## ภาษาไทย
 
@@ -29,7 +26,7 @@ The steps below apply to the 0.5.2 base APK. On 0.5.3, open **Options → Import
 1. ดาวน์โหลดและติดตั้ง APK บนเครื่อง Android
 2. คัดลอกโฟลเดอร์เกมที่ติดตั้ง Expansion 3 แล้วไปไว้บนเครื่อง ให้มี `RBO_Ex3.exe` และโฟลเดอร์ `DATA` อยู่ในระดับเดียวกัน
 3. เปิด **RBO Android** กด **Import game folder** แล้วเลือกโฟลเดอร์ดังกล่าว
-4. กด **Play Expansion 3** เพื่อเข้าเกม
+4. กด **Play** เพื่อเข้าเกม
 
 ### ตั้งค่าปุ่มและเสียง
 
@@ -47,7 +44,7 @@ An experimental **Ragnarok Battle Offline Expansion 3** port for ARM64 devices r
 1. Download and install the ARM64 APK on your Android device.
 2. Copy your installed Expansion 3 folder to the device. It should contain `RBO_Ex3.exe` and the `DATA` directory side by side.
 3. Open **RBO Android**, tap **Import game folder**, and select that folder.
-4. Tap **Play Expansion 3**.
+4. Tap **Play**.
 
 ### Controls and audio
 
