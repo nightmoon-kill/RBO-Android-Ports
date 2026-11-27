@@ -461,7 +461,7 @@ static void read_vtx(uint32_t p,uint32_t fvf,Vtx *v){
     if(((fvf>>8)&15)>=1){ v->u=*(float*)(gmem+o); v->v=*(float*)(gmem+o+4); }
 }
 
-/* ---------- GPU rasterizer routing (Metal, see gpu_raster.h) ----------
+/* ---------- GPU rasterizer routing (see gpu_raster.h) ----------
    The render target stays resident on the GPU between draws.  CPU code that touches a surface calls gpu_surf_access() first, which reads the
    GPU copy back when it is newer; after the CPU wrote, the GPU copy is stale and is re-uploaded before the next GPU draw.
    Per frame we count how many triangle pixels were drawn: only scenes big enough to pay for the upload/readback go to the GPU, and a game that
@@ -473,6 +473,11 @@ static void read_vtx(uint32_t p,uint32_t fvf,Vtx *v){
 #define GPU_KEY_SLOT     512         /* texture slot offset of the colour-keyed variant of a surface (= MAXS in dx.c) */          /* frames to stay on the CPU rasterizer after that */
 static int gpu_mode=-1;              /* -1 undecided, 0 off, 1 automatic, 2 always */
 static int gpu_dead=0;
+#ifdef __ANDROID__
+void d3d_android_set_renderer(int use_vulkan) {
+    gpu_mode=use_vulkan?2:0;
+}
+#endif
 static Surf *g_res=NULL; static int g_res_valid=0, g_res_newer=0;
 static uint32_t *gpu_buf=NULL; static size_t gpu_buf_cap=0;
 static float *gpu_vtx=NULL; static size_t gpu_vtx_cap=0;
@@ -482,6 +487,16 @@ static uint32_t gexp16[65536]; static uint32_t gexp16_k[4]; static int gexp16_ok
 
 static int gpu_usable(void){
     if(gpu_dead) return 0;
+#ifdef __ANDROID__
+    static int attempted=0;
+    if(gpu_mode>0&&!attempted){
+        attempted=1;
+        if(!gpu_init()){
+            fprintf(stderr,"[GPU] Vulkan unavailable (%s): CPU rasterizer\n",gpu_error());
+            gpu_mode=0;
+        } else fprintf(stderr,"[GPU] Vulkan rasterizer active\n");
+    }
+#else
     if(gpu_mode<0){
         gpu_mode=2;     /* default: always on (rbo_gpu_off.txt / rbo_gpu_auto.txt in the game folder change it) */
         const char *e=getenv("RBO_GPU"); if(e&&e[0]=='0') gpu_mode=0; else if(e&&e[0]=='a') gpu_mode=1; else if(e&&e[0]=='1') gpu_mode=2;
@@ -492,13 +507,21 @@ static int gpu_usable(void){
         if(gpu_mode&&!gpu_init()){ fprintf(stderr,"[GPU] unavailable (%s): CPU rasterizer\n",gpu_error()); gpu_mode=0; }
         else if(gpu_mode) fprintf(stderr,"[GPU] Metal rasterizer %s\n",gpu_mode==2?"forced on":"automatic");
     }
-    if(gpu_mode==0) return 0;
+#endif
+    if(gpu_mode<=0) return 0;
     if(gpu_failed()){ gpu_dead=1; g_res=NULL; g_res_valid=0; g_res_newer=0; fprintf(stderr,"[GPU] failed (%s): CPU rasterizer from now on\n",gpu_error()); return 0; }
     return 1;
 }
-static void gpu_buf_need(size_t n){ if(n>gpu_buf_cap){ free(gpu_buf); gpu_buf=malloc(n*4); gpu_buf_cap=n; } }
-static void res_upload(Surf *s){
-    size_t n=(size_t)s->w*s->h; gpu_buf_need(n); const Fmt *f=fmt_of(s);
+static int gpu_buf_need(size_t n){
+    if(n<=gpu_buf_cap) return 1;
+    uint32_t *buffer=realloc(gpu_buf,n*sizeof(*gpu_buf));
+    if(!buffer) return 0;
+    gpu_buf=buffer; gpu_buf_cap=n;
+    return 1;
+}
+static int res_upload(Surf *s){
+    if(!gpu_buf_need((size_t)s->w*s->h)) return 0;
+    const Fmt *f=fmt_of(s);
     if(s->bpp==16){
         uint32_t k[4]={s->rmask,s->gmask,s->bmask,s->amask};
         if(!gexp16_ok||memcmp(gexp16_k,k,sizeof k)){ for(uint32_t v=0;v<65536;v++) gexp16[v]=to_argb_f(f,v); memcpy(gexp16_k,k,sizeof k); gexp16_ok=1; }
@@ -507,10 +530,12 @@ static void res_upload(Surf *s){
         for(int y=0;y<s->h;y++){ const uint32_t *row=(const uint32_t*)(gmem+s->pix+(size_t)y*s->pitch); uint32_t *o=gpu_buf+(size_t)y*s->w; for(int x=0;x<s->w;x++) o[x]=to_argb_f(f,row[x]); }
     }
     gpu_rt_upload(gpu_buf,s->w,s->h); pol_trips++; st_trips++;
+    return !gpu_failed();
 }
 static void res_download(void){
     Surf *s=g_res; if(!s||!g_res_newer) return;
-    size_t n=(size_t)s->w*s->h; gpu_buf_need(n); gpu_rt_read(gpu_buf); g_res_newer=0;
+    gpu_rt_read(gpu_buf); g_res_newer=0;
+    if(gpu_failed()) return;
     const Fmt *f=fmt_of(s); int prr=8-f->rb,pgr=8-f->gb,pbr=8-f->bb,par=8-f->ab, prs=f->rs,pgs=f->gs,pbs=f->bs,pas=f->as;
     for(int y=0;y<s->h;y++){
         const uint32_t *in=gpu_buf+(size_t)y*s->w; uint8_t *row=gmem+s->pix+(size_t)y*s->pitch;
@@ -525,11 +550,20 @@ void gpu_surf_access(Surf *s,int write){
     res_download();
     if(write) g_res_valid=0;
 }
-void gpu_surf_release(Surf *s){ if(s&&s==g_res){ g_res=NULL; g_res_valid=0; g_res_newer=0; } }
+void gpu_surf_release(Surf *s){
+    if(s&&s==g_res){ g_res=NULL; g_res_valid=0; g_res_newer=0; }
+#ifdef __ANDROID__
+    if(s&&(s->ggen||s->ggen_k)){
+        vulkan_texture_release(s->id);
+        vulkan_texture_release(s->id+GPU_KEY_SLOT);
+    }
+#endif
+}
 static int res_acquire(Surf *rt){
     if(g_res&&g_res!=rt){ res_download(); g_res=NULL; g_res_valid=0; }
     if(g_res!=rt){ gpu_rt_set(rt->w,rt->h); g_res=rt; g_res_valid=0; }
-    if(!g_res_valid){ res_upload(rt); g_res_valid=1; }
+    if(!g_res_valid) g_res_valid=res_upload(rt);
+    if(!g_res_valid) return 0;
     return !gpu_failed();
 }
 /* Render targets the GPU path reproduces exactly: 16/32 bpp, and either no alpha channel or a full 8-bit one (a 1- or 4-bit alpha would have to be re-quantised
@@ -564,7 +598,7 @@ static int gpu_emit(Surf *rt){
     if(rc.tex_on){
         if(rc.use_key){   /* colour-keyed draw: keyed texels are zero (the CPU filter treats them as transparent black) and a mask kills fully keyed samples */
             if(t->ggen_k!=t->cgen){
-                size_t n=(size_t)t->w*t->h; gpu_buf_need(n); for(size_t i=0;i<n;i++) gpu_buf[i]=t->keymask[i]?0u:t->cache[i];
+                size_t n=(size_t)t->w*t->h; if(!gpu_buf_need(n)) return 0; for(size_t i=0;i<n;i++) gpu_buf[i]=t->keymask[i]?0u:t->cache[i];
                 gpu_tex_upload(t->id+GPU_KEY_SLOT,gpu_buf,t->keymask,t->w,t->h); t->ggen_k=t->cgen; }
             st.tex_id=t->id+GPU_KEY_SLOT;
         } else {
@@ -574,12 +608,19 @@ static int gpu_emit(Surf *rt){
         st.tw=t->w; st.th=t->h; st.use_key=rc.use_key; st.point=!rc.linear;
         st.addr=rc.addr==2?1:(rc.addr==3?2:0);
     }
-    size_t nv=ntris*3; if(nv*8>gpu_vtx_cap){ gpu_vtx_cap=nv*8*2; free(gpu_vtx); gpu_vtx=malloc(gpu_vtx_cap*sizeof(float)); }
+    size_t nv=ntris*3;
+    if(nv*8>gpu_vtx_cap){
+        size_t cap=nv*8*2;
+        float *buffer=realloc(gpu_vtx,cap*sizeof(*gpu_vtx));
+        if(!buffer) return 0;
+        gpu_vtx=buffer; gpu_vtx_cap=cap;
+    }
     float *o=gpu_vtx;
     for(size_t k=0;k<ntris;k++){ const Vtx *v3[3]={&tris[k].a,&tris[k].b,&tris[k].c};
         for(int j=0;j<3;j++){ const Vtx *v=v3[j]; uint32_t c=v->col;
             o[0]=v->x; o[1]=v->y; o[2]=v->u; o[3]=v->v; o[4]=((c>>16)&255)/255.0f; o[5]=((c>>8)&255)/255.0f; o[6]=(c&255)/255.0f; o[7]=(c>>24)/255.0f; o+=8; } }
     gpu_draw(&st,gpu_vtx,(int)nv);
+    if(gpu_failed()) return 0;
     g_res_newer=1; rt->cache_ok=0; st_gdraws++;
     return 1;
 }
@@ -591,15 +632,23 @@ static int gpu_clear_rect(Surf *rt,int l,int t,int r,int b,uint32_t color){
     float w=(float)rt->w, h=(float)rt->h, cr=((color>>16)&255)/255.0f, cg=((color>>8)&255)/255.0f, cb=(color&255)/255.0f, ca=(color>>24)/255.0f;
     const float q[6][2]={{0,0},{w,0},{0,h},{w,0},{w,h},{0,h}}; float vb[6*8];
     for(int i=0;i<6;i++){ float *o=vb+i*8; o[0]=q[i][0]; o[1]=q[i][1]; o[2]=0; o[3]=0; o[4]=cr; o[5]=cg; o[6]=cb; o[7]=ca; }
-    gpu_draw(&st,vb,6); g_res_newer=1; rt->cache_ok=0;
+    gpu_draw(&st,vb,6);
+    if(gpu_failed()) return 0;
+    g_res_newer=1; rt->cache_ok=0;
     return 1;
 }
 int d3d_gpu_report(char *out,int n){
     static unsigned long l_gd=0,l_cd=0,l_tr=0,l_sy=0,l_vx=0; static double l_wt=0, l_bz=0;
     unsigned long sy=0,vx=0,ru=0; double wt=0, bz=0; if(gpu_mode>0&&!gpu_dead){ gpu_stats(&sy,&wt,&vx,&ru); bz=gpu_busy_ms(); }
+#ifdef __ANDROID__
+    int len=snprintf(out,n,"[GPU] %s | draws gpu %lu cpu %lu | uploads %lu | waits %lu (%.1f ms) | vertices %lu%s%s\n",
+        gpu_dead?"failed":(gpu_mode==2?"Vulkan":"CPU"),st_gdraws-l_gd,st_cdraws-l_cd,st_trips-l_tr,sy-l_sy,wt-l_wt,vx-l_vx,
+        gpu_error()[0]?" | ":"",gpu_error());
+#else
     int len=snprintf(out,n,"[GPU] %s | draws gpu %lu cpu %lu | uploads %lu | waits %lu (%.1f ms) gpu busy %.1f ms verts %lu | frames gpu %lu cpu %lu penalty %lu%s%s\n",
         gpu_dead?"failed":(gpu_mode==0?"off":(gpu_mode==2?"forced":"auto")),st_gdraws-l_gd,st_cdraws-l_cd,st_trips-l_tr,sy-l_sy,wt-l_wt,bz-l_bz,vx-l_vx,st_fgpu,st_fcpu,st_penalty,
         (gpu_error()[0]?" | ":""),gpu_error());
+#endif
     l_gd=st_gdraws; l_cd=st_cdraws; l_tr=st_trips; l_sy=sy; l_wt=wt; l_bz=bz; l_vx=vx;
     return len<0?0:(len<n?len:n-1);
 }
@@ -624,9 +673,13 @@ static void draw(uint32_t type,uint32_t fvf,uint32_t vp,uint32_t nv,uint32_t idx
     else if(type==6) for(uint32_t i=1;i+1<n;i++) tri_setup(rt,VI(0),VI(i),VI(i+1));
     else { static int warned; if(!warned++) fprintf(stderr,"[D3D] primitive type %u not rasterized\n",type); }
 #ifdef RBO_GPU
+#ifdef __ANDROID__
+    if(ntris && gpu_usable() && gpu_rt_ok(rt) && gpu_emit(rt)){ ntris=0; return; }
+#else
     gpu_frame_tick();
     { long px=0; for(size_t k=0;k<ntris;k++) px+=(long)(tris[k].x1-tris[k].x0)*(tris[k].y1-tris[k].y0); pol_px+=px; }
     if(ntris && pol_use && gpu_rt_ok(rt) && gpu_usable() && gpu_emit(rt)){ ntris=0; return; }
+#endif
     if(ntris){ gpu_surf_access(rt,1); st_cdraws++; }       /* CPU rasterizer: bring the pixels back first and mark the GPU copy stale */
 #endif
     raster_flush(rt);

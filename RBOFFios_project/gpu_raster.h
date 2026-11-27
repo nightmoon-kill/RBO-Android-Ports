@@ -1,5 +1,5 @@
 #pragma once
-/* GPU (Metal) triangle rasterizer used by d3d.c in place of the CPU rasterizer for big scenes.
+/* GPU triangle rasterizer used by d3d.c in place of the CPU rasterizer for big scenes.
  *
  * The emulator keeps every DirectDraw surface in guest memory (gmem).  The GPU path keeps ONE render target resident as a texture:
  *   d3d.c uploads it (gpu_rt_upload), appends triangles (gpu_draw) and reads it back (gpu_rt_read) only when the CPU needs the pixels
@@ -26,7 +26,7 @@ typedef struct GpuState {
     float tfac[4];                              /* texture factor r,g,b,a (0..1) */
 } GpuState;
 
-int  gpu_init(void);                                  /* 1 when Metal is usable (idempotent) */
+int  gpu_init(void);                                  /* 1 when the backend is usable (idempotent) */
 const char *gpu_error(void);                          /* last init / runtime error text ("" if none) */
 int  gpu_failed(void);                                /* 1 after a GPU command buffer failed: stop using the GPU path */
 
@@ -41,6 +41,12 @@ void gpu_sync(void);                                  /* submit everything recor
 /* counters since start: syncs, total wait ms, triangles' vertices, state changes */
 void gpu_stats(unsigned long *syncs,double *wait_ms,unsigned long *verts,unsigned long *runs);
 double gpu_busy_ms(void);                             /* total time the GPU spent executing our command buffers (perf log: "gpu busy") */
+
+#ifdef __ANDROID__
+void d3d_android_set_renderer(int use_vulkan);
+void vulkan_raster_shutdown(void);
+void vulkan_texture_release(int slot);
+#endif
 
 #ifdef __cplusplus
 }

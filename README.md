@@ -8,13 +8,19 @@ The whole thing was vibe-coded using Codex.
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english) 
 
-**Latest APK: [RBO Android 0.5.2 · ARM64](downloads/RBO-Android-0.5.2-ARM64.apk?raw=true)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
+**[Android 0.5.3 source and build instructions](Android/vulkan/README.md)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
+
+**Base APK: [RBO Android 0.5.2 · ARM64](downloads/RBO-Android-0.5.2-ARM64.apk?raw=true)**
 
 SHA-256: `2c08c144ce4b69011630d9224df516d18c599b8ae03518015c00ab8f17df990b`
 
-ไฟล์ APK 0.5.2 เป็น build จากแชตก่อนหน้า ซอร์สโค้ดใน repo ยังเป็นรุ่น 0.4 และยังไม่ได้อัปเดตให้ตรงกับ APK นี้
+ซอร์ส 0.5.3 ครอบคลุมเมนูใหม่ ตัวเรนเดอร์ Vulkan และการสลับไดรเวอร์ Turnip สคริปต์ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
 
-The 0.5.2 APK is the build produced in the earlier chat. The source in this repository remains at 0.4 and has not yet been updated to match this APK.
+The 0.5.3 source covers the new launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
+
+ขั้นตอนด้านล่างอ้างอิง APK ฐาน 0.5.2 สำหรับ 0.5.3 ให้เข้า **Options → Import Game Folder** แล้วเลือก **Play**
+
+The steps below apply to the 0.5.2 base APK. On 0.5.3, open **Options → Import Game Folder** and then choose **Play**.
 
 ## ภาษาไทย
 

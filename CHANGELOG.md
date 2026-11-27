@@ -1,3 +1,19 @@
+# RBO Android 0.5.3
+
+## ภาษาไทย
+
+- จัดหน้าแรกเป็น Play, Options, Patch และ Debugging พร้อมแสดงเลขเวอร์ชัน
+- เพิ่มตัวเรนเดอร์ Vulkan และตัวเลือกนำเข้าและสลับไดรเวอร์ Turnip ใน Options
+- ย้ายการติดตั้งและลบแพตช์ภาษาไทยและ Widescreen ไปที่ Patch พร้อมภาพและเครดิต Monster แปล
+- ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
+
+## English
+
+- Groups the launcher into Play, Options, Patch, and Debugging and displays the app version.
+- Adds Vulkan rendering and Turnip driver import and selection in Options.
+- Groups Thai language and widescreen patch actions under Patch with the Monster translation credit.
+- Builds on the original 0.5.2 APK for existing engine features.
+
 # RBO Android 0.5.2
 
 ## ภาษาไทย
