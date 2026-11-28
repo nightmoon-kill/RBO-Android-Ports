@@ -1,6 +1,6 @@
 # RBO Android 0.7.0 — LAN Experimental
 
-**Experimental / Pre-release · รุ่นทดลอง**
+**Experimental · รุ่นทดลอง**
 
 ## ภาษาไทย
 
