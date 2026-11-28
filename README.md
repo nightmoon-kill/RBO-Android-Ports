@@ -2,7 +2,7 @@
 
 **[RBO Android 0.6.7 — download](https://github.com/nightmoon-kill/RBO-Android-Ports/releases/tag/v0.6.7)** · [Changelog / รายการอัปเดต](CHANGELOG.md)
 
-Vulkan rendering and native effect preparation, a bounded resource cache with background read-ahead, HP/SP and 999-point cheats, Move List / Monsters / Status companion tabs, ENG / THAI, and MPEG Layer I intro audio. User-tested on Snapdragon 7 Gen 4.
+Vulkan rendering and native effect preparation, a bounded resource cache with background read-ahead, HP/SP and 999-point cheats, Move List / Monsters / Status companion tabs, ENG / THAI, and MPEG Layer I intro audio. User-tested on Ayn Odin 3 and Retroid Pocket Duo.
 
 <img width="2340" height="1080" alt="Screenshot_20261127_165211" src="https://github.com/user-attachments/assets/6793a5d0-fc05-403b-b986-e1c2335aaecf" />
 <img width="2340" height="1080" alt="Screenshot_20261127_165221" src="https://github.com/user-attachments/assets/1c57f012-5119-41c7-ac85-2d25e7033d50" />
