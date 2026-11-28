@@ -1,6 +1,6 @@
 # RBO Android 0.7.0 — LAN Experimental
 
-This is an experimental pre-release. See [LAN.md](LAN.md) for setup and limitations.
+This is an experimental release. See [LAN.md](LAN.md) for setup and limitations.
 LAN follows the renderer selection and enables performance acceleration. Cheats
 and Save States are disabled in LAN; its saves are temporary copies of the host's data.
 
