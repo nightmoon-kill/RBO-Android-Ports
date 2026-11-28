@@ -267,5 +267,6 @@ final class AppLanguageCatalog {
         {"Performance mode \u00b7 OFF","\u0e42\u0e2b\u0e21\u0e14\u0e1b\u0e23\u0e30\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e20\u0e32\u0e1e \u00b7 \u0e1b\u0e34\u0e14"},
         {"On","\u0e40\u0e1b\u0e34\u0e14"},
         {"Off","\u0e1b\u0e34\u0e14"},
+        {"LAN multiplayer","\u0e40\u0e25\u0e48\u0e19\u0e23\u0e48\u0e27\u0e21\u0e01\u0e31\u0e19\u0e1c\u0e48\u0e32\u0e19 LAN"},
     };
 }

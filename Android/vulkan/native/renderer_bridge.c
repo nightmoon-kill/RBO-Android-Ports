@@ -12,6 +12,7 @@
 #include "asset_io.h"
 #include "asset_cache.h"
 #include "skill_runtime.h"
+#include "lan_game.h"
 
 void vulkan_d3d_register(void);
 uint32_t vulkan_d3d_get_object(void);
@@ -92,6 +93,9 @@ static void connect_asset_handlers(void) {
     extern uint32_t hle_tab_count(void);
     int count=asset_io_patch_table((HleEntry*)table,hle_tab_count());
     fprintf(stderr,"[Asset I/O] connected_handlers=%d\n",count);
+    if(lan_game_active()&&!lan_game_patch_table((HleEntry*)table,hle_tab_count())){
+        fprintf(stderr,"[LAN] unsupported keyboard handler; stopping\n");cpu.halted=1;
+    }
 }
 
 __attribute__((visibility("default"))) void hle_init(void) {
@@ -120,6 +124,7 @@ __attribute__((visibility("default"))) void rbo_hooks_resync(void) {
 /* The emulator also ticks audio in 2D menus before any 3D actor is created.
    Service queued point toggles there; companion_capture limits work to 10 Hz. */
 __attribute__((visibility("default"))) void ds_tick(void) {
+    lan_game_tick();
     companion_capture();
     original.audio_tick();
 }

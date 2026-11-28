@@ -44,6 +44,10 @@ public final class LauncherMenus {
 
         play.setText(AppLanguage.text("PLAY"));
         move(root, menus.main, play);
+        Button lan = new Button(activity);
+        lan.setText(AppLanguage.text("LAN multiplayer"));
+        lan.setOnClickListener(view -> LanGame.menu(activity, play));
+        menus.main.addView(lan);
         menus.addLink("OPTIONS", menus.options);
         menus.addLink("PATCH", menus.patch);
         menus.addLink("DEBUGGING", menus.debugging);

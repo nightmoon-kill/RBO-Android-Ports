@@ -1,4 +1,8 @@
-# RBO Android 0.6.7
+# RBO Android 0.7.0 — LAN Experimental
+
+This is an experimental pre-release. See [LAN.md](LAN.md) for setup and limitations.
+LAN follows the renderer selection and enables performance acceleration. Cheats
+and Save States are disabled in LAN; its saves are temporary copies of the host's data.
 
 See the [release changelog](../../CHANGELOG.md) for the complete feature description.
 The companion provides Move List / Monsters / Status for the active single
@@ -43,7 +47,7 @@ export APK_KEYSTORE_PASSWORD
 bash Android/vulkan/build.sh
 ```
 
-The output is `Android/vulkan/build/RBO-Android-0.6.7-Companion-ARM64.apk`.
+The output is `Android/vulkan/build/RBO-Android-0.7.0-LAN-Experimental-ARM64.apk`.
 Supply your own signing material and compatible Turnip driver ZIPs.
 
 The bundled AdrenoTools source is from revision

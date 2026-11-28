@@ -162,7 +162,35 @@ def patch_smali():
     return v0
 .end method
 """
+    # LAN setup runs off the UI thread; re-enter startGame once both are ready.
+    entry = ".method private startGame()V\n    .locals 5"
+    gate = """
+
+    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/LanGame;->awaitReady(Landroid/app/Activity;)Z
+    move-result v0
+    if-eqz v0, :lan_ready
+    return-void
+    :lan_ready"""
+    game_code = replace_once(game_code, entry, entry + gate)
+    game_code = game_code.replace("Lcom/nakpaaiyaa/rbo/NativeCore;->setKey(IZ)V", "Lcom/nakpaaiyaa/rbo/LanGame;->key(IZ)V")
+    game_code = game_code.replace("Lcom/nakpaaiyaa/rbo/NativeCore;->start(Ljava/lang/String;Ljava/lang/String;Z)I", "Lcom/nakpaaiyaa/rbo/LanGame;->start(Ljava/lang/String;Ljava/lang/String;Z)I")
+    pause = "    invoke-super {p0}, Landroid/app/Activity;->onPause()V"
+    game_code = replace_once(game_code, pause, "    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/LanGame;->background(Landroid/app/Activity;)V\n\n" + pause)
+    destroy = "    invoke-super {p0}, Landroid/app/Activity;->onDestroy()V"
+    game_code = replace_once(game_code, destroy, "    invoke-static {}, Lcom/nakpaaiyaa/rbo/LanGame;->destroy()V\n\n" + destroy)
     game.write_text(game_code)
+    monitor=smali / "GameActivity$1.smali"
+    monitor_code=monitor.read_text()
+    # Keep a LAN disconnect dialog visible until acknowledged.
+    anchor="    invoke-static {}, Lcom/nakpaaiyaa/rbo/NativeCore;->exitCode()I"
+    monitor_code=replace_once(monitor_code,anchor,"""    invoke-static {}, Lcom/nakpaaiyaa/rbo/LanGame;->keepErrorVisible()Z
+    move-result v0
+    if-eqz v0, :lan_check_exit
+    return-void
+    :lan_check_exit
+"""+anchor)
+    monitor.write_text(monitor_code)
+
     # Retain the original HP/SP implementation behind the expanded cheat menu.
     cheat_dir = root / "decoded/smali_classes2/com/nakpaaiyaa/rbo"
     cheat = cheat_dir / "CheatMenu.smali"
@@ -203,7 +231,7 @@ def patch_smali():
 
 def patch_manifest(data):
     for old, new in (("com.nakpaaiyaa.rbo.perftst", "com.nakpaaiyaa.rbo.cmp0600"),
-                     ("0.5.2", "0.6.7")):
+                     ("0.5.2", "0.7.0")):
         old, new = old.encode("utf-16le"), new.encode("utf-16le")
         assert len(old) == len(new)
         data = replace_once(data, old, new)
@@ -222,11 +250,12 @@ def patch_manifest(data):
                 name, = unpack_from("<I", manifest, attr + 4)
                 if name < len(resource_ids) and resource_ids[name] == 0x0101021B:
                     assert unpack_from("<I", manifest, attr + 16) == (17,)
-                    pack_into("<I", manifest, attr + 16, 33)
+                    pack_into("<I", manifest, attr + 16, 36)
                     updated += 1
         offset += size
     assert offset == len(manifest) and updated == 1
-    return manifest
+    import runpy
+    return runpy.run_path(str(root / "lan_manifest.py"))["add_internet"](manifest)
 
 
 def extract_libraries():

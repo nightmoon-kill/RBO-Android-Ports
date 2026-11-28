@@ -13,7 +13,7 @@ shaders="$ndk/shader-tools/linux-x86_64/glslc"
 engine="$project/../../RBOFFios_project"
 native="$project/../native"
 base="$project/../../downloads/RBO-Android-0.5.2-ARM64.apk"
-output="$project/build/RBO-Android-0.6.7-Companion-ARM64.apk"
+output="$project/build/RBO-Android-0.7.0-LAN-Experimental-ARM64.apk"
 mkdir -p build/classes build/settings-dex
 python3 assemble.py extract
 
@@ -41,11 +41,11 @@ common=(-std=gnu11 -O3 -fPIC -fvisibility=hidden -ffp-contract=off -fno-strict-a
     -Dd3d_gpu_report=vulkan_d3d_gpu_report -Dgpu_surf_access=vulkan_gpu_surf_access \
     -Dgpu_surf_release=vulkan_gpu_surf_release -Dd3d_diag=vulkan_d3d_diag \
     -c "$engine/d3d.c" -o build/d3d.o
-"$cc" -std=gnu11 -O3 -fPIC -fvisibility=default -DRBO_LIBRARY=1 -DRBO_MOVIE_LAYER1=1 \
+"$cc" -std=gnu11 -O3 -fPIC -fvisibility=default -DRBO_LIBRARY=1 -DRBO_MOVIE_LAYER1=1 -DRBO_LAN=1 \
     -I"$engine" -Inative -c "$engine/dshow.c" -o build/movie_dshow.o
 "$cc" "${common[@]}" -Wall -Wextra -Werror -shared -Wl,-z,max-page-size=16384 \
     -Wl,-soname,librbo_vulkan.so -Wl,--no-undefined -o build/librbo_vulkan.so \
-    -DRBO_VULKAN_DRIVERS=1 native/renderer_bridge.c native/save_state.c native/companion_data.c native/companion_decode.c native/point_cheats.c native/movie_audio.c native/asset_cache.c native/asset_io.c native/draw_batch.c native/skill_quad.c native/skill_runtime.c build/movie_dshow.o native/vulkan_driver.c "$native/vulkan_raster.c" build/d3d.o \
+    -DRBO_VULKAN_DRIVERS=1 native/renderer_bridge.c native/lan_game.c native/save_state.c native/companion_data.c native/companion_decode.c native/point_cheats.c native/movie_audio.c native/asset_cache.c native/asset_io.c native/draw_batch.c native/skill_quad.c native/skill_runtime.c build/movie_dshow.o native/vulkan_driver.c "$native/vulkan_raster.c" build/d3d.o \
     -L"$project/build/original-libs" -Wl,--no-as-needed -l:librbo_android.so -l:librbo_core044.so \
     -ldl -lm
 

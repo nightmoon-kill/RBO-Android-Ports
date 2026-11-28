@@ -50,6 +50,7 @@ public final class RendererSettings {
 
     public static void putSelection(Context context, Intent launch) {
         AppLanguage.putSelection(context, launch);
+        LanGame.putSelection(launch);
         SharedPreferences settings = preferences(context);
         launch.putExtra(VULKAN, settings.getBoolean(VULKAN, false));
         launch.putExtra(DRIVER, settings.getString(DRIVER, ""));
@@ -59,7 +60,7 @@ public final class RendererSettings {
     public static void configureForGame(Activity activity) {
         System.loadLibrary("rbo_vulkan");
         Intent launch = activity.getIntent();
-        configurePerformanceNative(launch.getBooleanExtra(PERFORMANCE, true));
+        configurePerformanceNative(LanGame.active() || launch.getBooleanExtra(PERFORMANCE, true));
         boolean useVulkan = launch.getBooleanExtra(VULKAN, false);
         DriverStore selection = useVulkan ? DriverStore.get(activity, launch.getStringExtra(DRIVER)) : null;
         configureNative(useVulkan,

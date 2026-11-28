@@ -79,12 +79,16 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
         HudIcons.apply(stateButton, HudIcons.Icon.STATE, "Save or Load State");
         gameFrame.addView(stateButton, HudIcons.position(touchButton, 3));
         saveStates = new SaveStateMenu(game, stateButton, surface);
+        if(game.getIntent().getIntExtra("lan_role",0)!=0){
+            cheatButton.setEnabled(false);stateButton.setEnabled(false);movesButton.setEnabled(false);
+        }
     }
 
     public static void install(Activity game, FrameLayout gameFrame, Button touchButton, SurfaceView surface) {
         if (active != null) active.dispose();
         Button cheatButton = (Button) gameFrame.getChildAt(gameFrame.getChildCount() - 1);
         active = new MoveListDisplay(game, gameFrame, touchButton, cheatButton, surface);
+        LanGame.badge(game, gameFrame);
     }
 
     public static void attach(Activity game) {
@@ -110,6 +114,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
     }
 
     private void showInline() {
+        if(LanGame.active()) return;
         if (inline != null || (panel != null && panel.isShowing())) return;
         CompanionPanel next = new CompanionPanel(game, () -> hideInline());
         if (!((GameHost) game).setMoveListOpen(true)) return;

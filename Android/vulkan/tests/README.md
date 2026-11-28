@@ -32,3 +32,16 @@ LocalizationTest.java runs with AppLanguageCatalog.java and UiText.java in a
 host JVM. test_packaged_apk.py accepts the final signed APK and checks it against
 all rebuilt DEX and native files in build/. See each test source for arguments.
 Android rendering and device speed should also be verified through actual play.
+
+
+## LAN checks
+
+Compile LanProtocol.java, LanPeer.java, LanFiles.java and tests/LanTest.java in a
+host JVM (package com.nakpaaiyaa.rbo), then run com.nakpaaiyaa.rbo.LanTest.
+It exercises real TCP loopback input exchange, P1/P2 assignment, room codes,
+state-check mismatches, fragmented reads, single-write packets and temporary saves.
+
+Build tests/test_lan_input.c with the native and RBOFFios_project include paths,
+plus the host JDK's include and platform include directories. It tests the actual
+native keyboard hook with a mock JVM transport, including solo bypass and disconnect.
+These host checks do not measure Android audio or frame rate.

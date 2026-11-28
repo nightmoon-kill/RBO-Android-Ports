@@ -1,1062 +1,1066 @@
 [
- [
-  "PLAY",
-  "เล่นเกม"
- ],
- [
-  "OPTIONS",
-  "ตัวเลือก"
- ],
- [
-  "PATCH",
-  "แพตช์"
- ],
- [
-  "DEBUGGING",
-  "เครื่องมือวิเคราะห์"
- ],
- [
-  "‹ OPTIONS",
-  "‹ ตัวเลือก"
- ],
- [
-  "‹ PATCH",
-  "‹ แพตช์"
- ],
- [
-  "‹ DEBUGGING",
-  "‹ เครื่องมือวิเคราะห์"
- ],
- [
-  "CONTROL SETTINGS",
-  "ตั้งค่าปุ่ม"
- ],
- [
-  "Control settings",
-  "ตั้งค่าการควบคุม"
- ],
- [
-  "Language",
-  "ภาษา"
- ],
- [
-  "Version ",
-  "เวอร์ชัน "
- ],
- [
-  "Back to main menu",
-  "กลับเมนูหลัก"
- ],
- [
-  "Cancel",
-  "ยกเลิก"
- ],
- [
-  "OK",
-  "ตกลง"
- ],
- [
-  "Done",
-  "เสร็จสิ้น"
- ],
- [
-  "Reset",
-  "รีเซ็ต"
- ],
- [
-  "Install",
-  "ติดตั้ง"
- ],
- [
-  "Remove patch",
-  "ลบแพตช์"
- ],
- [
-  "Finished",
-  "เรียบร้อย"
- ],
- [
-  "Play Expansion 3",
-  "เล่น Expansion 3"
- ],
- [
-  "Import game folder",
-  "นำเข้าโฟลเดอร์เกม"
- ],
- [
-  "Import another copy",
-  "นำเข้าเกมอีกชุด"
- ],
- [
-  "Choose folder",
-  "เลือกโฟลเดอร์"
- ],
- [
-  "Import failed",
-  "นำเข้าไม่สำเร็จ"
- ],
- [
-  "Game ready",
-  "เกมพร้อมเล่น"
- ],
- [
-  "Thai v1.2",
-  "ภาษาไทย v1.2"
- ],
- [
-  "Copying game files… Keep this screen open.",
-  "กำลังคัดลอกไฟล์เกม… โปรดเปิดหน้านี้ค้างไว้"
- ],
- [
-  "Select the folder containing RBO_Ex3.exe and DATA.",
-  "เลือกโฟลเดอร์ที่มี RBO_Ex3.exe และ DATA"
- ],
- [
-  "Select the folder that contains RBO_Ex3.exe and DATA.",
-  "เลือกโฟลเดอร์ที่มีไฟล์ RBO_Ex3.exe และโฟลเดอร์ DATA"
- ],
- [
-  "The game folder could not be imported.",
-  "ไม่สามารถนำเข้าโฟลเดอร์เกมได้"
- ],
- [
-  "Import a different copy? The current game and its saves will be kept as the previous import.",
-  "นำเข้าเกมอีกชุดหรือไม่? เกมและเซฟปัจจุบันจะถูกเก็บไว้เป็นชุดก่อนหน้า"
- ],
- [
-  "Test audio",
-  "ทดสอบเสียง"
- ],
- [
-  "Share last game log",
-  "แชร์บันทึกการเล่นล่าสุด"
- ],
- [
-  "Share game log",
-  "แชร์บันทึกเกม"
- ],
- [
-  "The last game log could not be read.",
-  "ไม่สามารถอ่านบันทึกเกมล่าสุดได้"
- ],
- [
-  "Install Thai Language",
-  "ติดตั้งภาษาไทยในเกม"
- ],
- [
-  "Thai Language Installed",
-  "ติดตั้งภาษาไทยในเกมแล้ว"
- ],
- [
-  "Remove Thai Language",
-  "ลบภาษาไทยในเกม"
- ],
- [
-  "Install Thai patch v1.2",
-  "ติดตั้งแพตช์ภาษาไทย v1.2"
- ],
- [
-  "Remove Thai patch",
-  "ลบแพตช์ภาษาไทย"
- ],
- [
-  "Restore the files from before the Thai patch, keeping current saves and resolution.",
-  "คืนไฟล์จากก่อนลงแพตช์ไทย โดยเก็บเซฟและความละเอียดปัจจุบันไว้"
- ],
- [
-  "Requires a compatible Japanese game with Extra Scenarios 1–3. Only the imported copy is patched. An existing widescreen patch is preserved.",
-  "ต้องใช้ชุดเกมญี่ปุ่นพร้อม Extra Scenario 1–3 ที่เข้ากันได้ แอปจะแก้เฉพาะสำเนาเกมที่นำเข้า ไฟล์นี้จะเก็บ Widescreen ไว้เมื่อ RBO_Ex3.exe มีแพตช์จอกว้างอยู่แล้ว"
- ],
- [
-  "Install Widescreen",
-  "ติดตั้งแพตช์จอกว้าง"
- ],
- [
-  "Remove Widescreen",
-  "ลบแพตช์จอกว้าง"
- ],
- [
-  "Install Widescreen · 1280×720",
-  "ติดตั้งจอกว้าง · 1280×720"
- ],
- [
-  "Install widescreen patch",
-  "ติดตั้งแพตช์ Widescreen"
- ],
- [
-  "Remove widescreen patch",
-  "ลบแพตช์ Widescreen"
- ],
- [
-  "Set the game to 1280×720 (16:9), using marvinelo's patch.",
-  "ตั้งเกมเป็น 1280×720 (16:9) ตามแพตช์ของ marvinelo"
- ],
- [
-  "Restore the game resolution to 640×480.",
-  "คืนค่าความละเอียดของเกมเป็น 640×480"
- ],
- [
-  "Applying game patch…",
-  "กำลังแก้ไขแพตช์เกม…"
- ],
- [
-  "Patch installation is incomplete. Install the patch again to recover before retrying.",
-  "แพตช์ยังติดตั้งไม่เสร็จ กดติดตั้งแพตช์เพื่อกู้คืนก่อนลองอีกครั้ง"
- ],
- [
-  "Thai language installed; the existing widescreen patch was preserved.",
-  "ติดตั้งภาษาไทยแล้ว และเก็บแพตช์ Widescreen เดิมไว้"
- ],
- [
-  "Thai language installed; this game copy has no widescreen patch.",
-  "ติดตั้งภาษาไทยแล้ว ชุดเกมนี้ยังไม่มีแพตช์ Widescreen"
- ],
- [
-  "Restored the files from before the Thai patch.",
-  "คืนไฟล์ก่อนลงแพตช์ภาษาไทยแล้ว"
- ],
- [
-  "Widescreen 1280×720 enabled.",
-  "ตั้ง Widescreen 1280×720 แล้ว"
- ],
- [
-  "Resolution restored to 640×480.",
-  "คืนค่าความละเอียด 640×480 แล้ว"
- ],
- [
-  "Could not patch the game.",
-  "แก้ไขแพตช์เกมไม่สำเร็จ"
- ],
- [
-  "Patch failed",
-  "แก้ไขแพตช์ไม่สำเร็จ"
- ],
- [
-  "Port by Nakpaaiyaa",
-  "พอร์ตโดย นักป้ายยา"
- ],
- [
-  "Thai translation: Monster",
-  "แปลภาษาไทยโดย Monster"
- ],
- [
-  "Renderer",
-  "การแสดงผล"
- ],
- [
-  "Renderer · CPU",
-  "การแสดงผล · CPU"
- ],
- [
-  "Renderer · Vulkan",
-  "การแสดงผล · Vulkan"
- ],
- [
-  "Install Turnip Driver",
-  "ติดตั้งไดรเวอร์ Turnip"
- ],
- [
-  "Vulkan driver",
-  "ไดรเวอร์ Vulkan"
- ],
- [
-  "System driver",
-  "ไดรเวอร์ระบบ"
- ],
- [
-  "Installing Turnip driver…",
-  "กำลังติดตั้งไดรเวอร์ Turnip…"
- ],
- [
-  "Selected ",
-  "เลือกแล้ว: "
- ],
- [
-  "Could not install driver",
-  "ติดตั้งไดรเวอร์ไม่สำเร็จ"
- ],
- [
-  "The selected file could not be imported.",
-  "ไม่สามารถนำเข้าไฟล์ที่เลือกได้"
- ],
- [
-  "Could not create driver folder.",
-  "ไม่สามารถสร้างโฟลเดอร์ไดรเวอร์ได้"
- ],
- [
-  "Could not create temporary folder.",
-  "ไม่สามารถสร้างโฟลเดอร์ชั่วคราวได้"
- ],
- [
-  "Could not read the ZIP.",
-  "ไม่สามารถอ่านไฟล์ ZIP ได้"
- ],
- [
-  "Could not save the driver.",
-  "ไม่สามารถบันทึกไดรเวอร์ได้"
- ],
- [
-  "Too many entries in driver ZIP.",
-  "ไฟล์ ZIP ไดรเวอร์มีไฟล์มากเกินไป"
- ],
- [
-  "Driver ZIP is too large.",
-  "ไฟล์ ZIP ไดรเวอร์มีขนาดใหญ่เกินไป"
- ],
- [
-  "Duplicate file: ",
-  "ไฟล์ซ้ำ: "
- ],
- [
-  "The ZIP needs meta.json at its root.",
-  "ต้องมี meta.json ที่ระดับบนสุดของไฟล์ ZIP"
- ],
- [
-  "Invalid driver name or libraryName in meta.json.",
-  "ชื่อไดรเวอร์หรือ libraryName ใน meta.json ไม่ถูกต้อง"
- ],
- [
-  "This driver requires a newer Android version.",
-  "ไดรเวอร์นี้ต้องใช้ Android รุ่นใหม่กว่า"
- ],
- [
-  " is not an ARM64 Android shared library.",
-  " ไม่ใช่ไลบรารี Android แบบ ARM64"
- ],
- [
-  "Controls",
-  "ตั้งค่าปุ่ม"
- ],
- [
-  "Character controls",
-  "การควบคุมตัวละคร"
- ],
- [
-  "Controls: ",
-  "การตั้งค่าปุ่ม: "
- ],
- [
-  "Press a controller button or move the D-pad or left stick.",
-  "กดปุ่มบนจอย หรือขยับ D-pad หรืออนาล็อกซ้าย"
- ],
- [
-  "Choose from list",
-  "เลือกจากรายการ"
- ],
- [
-  " controller button",
-  " ปุ่มจอย"
- ],
- [
-  " game key",
-  " ปุ่มในเกม"
- ],
- [
-  ", controller ",
-  ", ปุ่มจอย "
- ],
- [
-  ", game key ",
-  ", ปุ่มในเกม "
- ],
- [
-  "Could not save the controls.",
-  "ไม่สามารถบันทึกการตั้งค่าปุ่มได้"
- ],
- [
-  "Reset defaults",
-  "คืนค่าเริ่มต้น"
- ],
- [
-  "Restore the default game keys and controller buttons?",
-  "คืนค่าปุ่มในเกมและปุ่มจอยเป็นค่าเริ่มต้นหรือไม่?"
- ],
- [
-  "The left stick follows the D-pad. Selecting a binding already in use swaps the two.",
-  "อนาล็อกซ้ายใช้ค่าเดียวกับ D-pad หากเลือกปุ่มที่ใช้อยู่แล้ว ระบบจะสลับปุ่มทั้งสองให้"
- ],
- [
-  "Action",
-  "การกระทำ"
- ],
- [
-  "Game key",
-  "ปุ่มในเกม"
- ],
- [
-  "Controller",
-  "จอยควบคุม"
- ],
- [
-  "Move up",
-  "ขึ้น"
- ],
- [
-  "Move down",
-  "ลง"
- ],
- [
-  "Move left",
-  "ซ้าย"
- ],
- [
-  "Move right",
-  "ขวา"
- ],
- [
-  "Weak attack",
-  "โจมตีเบา"
- ],
- [
-  "Strong attack",
-  "โจมตีหนัก"
- ],
- [
-  "Guard",
-  "ป้องกัน"
- ],
- [
-  "Special",
-  "พิเศษ"
- ],
- [
-  "Jump",
-  "กระโดด"
- ],
- [
-  "Start",
-  "เริ่ม"
- ],
- [
-  "D-pad up",
-  "D-pad ขึ้น"
- ],
- [
-  "D-pad down",
-  "D-pad ลง"
- ],
- [
-  "D-pad left",
-  "D-pad ซ้าย"
- ],
- [
-  "D-pad right",
-  "D-pad ขวา"
- ],
- [
-  "Could not start the game",
-  "เปิดเกมไม่สำเร็จ"
- ],
- [
-  "Return to the launcher?",
-  "กลับไปหน้าแรกของแอปหรือไม่?"
- ],
- [
-  "Exit game",
-  "ออกจากเกม"
- ],
- [
-  "Starting Expansion 3…",
-  "กำลังเปิด Expansion 3…"
- ],
- [
-  "Toggle on-screen controls",
-  "เปิดหรือปิดปุ่มสัมผัส"
- ],
- [
-  "Directional pad",
-  "ปุ่มทิศทาง"
- ],
- [
-  "Cheat",
-  "สูตรช่วยเล่น"
- ],
- [
-  "Cheats",
-  "สูตรช่วยเล่นสำหรับตัวละคร"
- ],
- [
-  "Cheats are unavailable for this EX3 executable.",
-  "ไม่รองรับสูตรช่วยเล่นสำหรับไฟล์ EX3 นี้"
- ],
- [
-  "Enter a stage before using cheats.",
-  "เข้าเล่นในด่านก่อนใช้สูตรช่วยเล่น"
- ],
- [
-  "Inf HP · Refill to max",
-  "HP ไม่ลด · เติมจนเต็ม"
- ],
- [
-  "Inf SP · Refill to max",
-  "SP ไม่ลด · เติมจนเต็ม"
- ],
- [
-  "Open Move List",
-  "เปิดรายการท่า"
- ],
- [
-  "Save or Load State",
-  "บันทึกหรือโหลดสถานะเกม"
- ],
- [
-  "Move List",
-  "รายการท่า"
- ],
- [
-  "Monsters",
-  "มอนสเตอร์"
- ],
- [
-  "Status",
-  "สถานะ"
- ],
- [
-  "Close companion",
-  "ปิดหน้าข้อมูลเกม"
- ],
- [
-  "LIVE",
-  "อัปเดตสด"
- ],
- [
-  "Game data",
-  "ข้อมูลจากเกม"
- ],
- [
-  "Only spawned enemies in this area are counted",
-  "นับเฉพาะมอนสเตอร์ที่เกิดแล้วในพื้นที่นี้"
- ],
- [
-  "Waiting for gameplay · Character data appears after starting a stage",
-  "รอตัวละครเข้าเกม · ข้อมูลจะแสดงเมื่อเริ่มเล่น"
- ],
- [
-  "Monsters in this area. Tap to show the next page.",
-  "มอนสเตอร์ในพื้นที่นี้ แตะเพื่อดูหน้าถัดไป"
- ],
- [
-  "FIELD REPORT",
-  "ข้อมูลพื้นที่"
- ],
- [
-  "Monsters in this area",
-  "มอนสเตอร์ในพื้นที่นี้"
- ],
- [
-  "REMAINING",
-  "คงเหลือ"
- ],
- [
-  "Area clear",
-  "กำจัดหมดแล้ว"
- ],
- [
-  "Waiting for gameplay",
-  "รอเข้าเล่นเกม"
- ],
- [
-  "No spawned enemies remain in this area",
-  "ไม่มีมอนสเตอร์ที่เกิดแล้วเหลืออยู่ในพื้นที่นี้"
- ],
- [
-  "The list updates when entering a battle area",
-  "รายการจะอัปเดตเมื่อเข้าสู่ฉากต่อสู้"
- ],
- [
-  "Remaining",
-  "เหลืออยู่"
- ],
- [
-  "Loading image",
-  "กำลังโหลดภาพ"
- ],
- [
-  "SPAWNED ENEMIES ONLY",
-  "เฉพาะมอนสเตอร์ที่เกิดแล้ว"
- ],
- [
-  "Tap to change page",
-  "แตะเพื่อเปลี่ยนหน้า"
- ],
- [
-  "LIVE FIELD COUNT",
-  "จำนวนในพื้นที่ขณะนี้"
- ],
- [
-  "CHARACTER STATUS",
-  "สถานะตัวละคร"
- ],
- [
-  "Adventure awaits",
-  "เตรียมออกผจญภัย"
- ],
- [
-  "Select a character and enter the game",
-  "เลือกตัวละครแล้วเข้าเกม"
- ],
- [
-  "Male",
-  "ชาย"
- ],
- [
-  "Female",
-  "หญิง"
- ],
- [
-  "CHARACTER",
-  "ตัวละคร"
- ],
- [
-  "Ready for battle",
-  "พร้อมต่อสู้"
- ],
- [
-  "Waiting for character",
-  "รอตัวละครเข้าเกม"
- ],
- [
-  "LEVEL",
-  "เลเวล"
- ],
- [
-  "Strength",
-  "พละกำลัง"
- ],
- [
-  "Agility",
-  "ความคล่องตัว"
- ],
- [
-  "Vitality",
-  "ความทนทาน"
- ],
- [
-  "Intelligence",
-  "สติปัญญา"
- ],
- [
-  "Dexterity",
-  "ความแม่นยำ"
- ],
- [
-  "Luck",
-  "โชค"
- ],
- [
-  "EXP",
-  "ค่าประสบการณ์"
- ],
- [
-  "STAT POINTS",
-  "แต้มสถานะ"
- ],
- [
-  "SKILL POINTS",
-  "แต้มสกิล"
- ],
- [
-  "Character status: waiting for gameplay",
-  "สถานะตัวละคร: รอเข้าเล่นเกม"
- ],
- [
-  "Swordman",
-  "นักดาบ"
- ],
- [
-  "Archer",
-  "นักธนู"
- ],
- [
-  "Magician",
-  "นักเวท"
- ],
- [
-  "Merchant",
-  "พ่อค้า"
- ],
- [
-  "Acolyte",
-  "นักบวช"
- ],
- [
-  "Thief",
-  "โจร"
- ],
- [
-  "Novice",
-  "โนวิซ"
- ],
- [
-  "Auto",
-  "ออโต้"
- ],
- [
-  "Follow the active character",
-  "ติดตามตัวละครที่กำลังเล่น"
- ],
- [
-  "Previous class",
-  "อาชีพก่อนหน้า"
- ],
- [
-  "Next class",
-  "อาชีพถัดไป"
- ],
- [
-  "Switch character variant",
-  "สลับตัวละครชายหรือหญิง"
- ],
- [
-  "Close Move List",
-  "ปิดรายการท่า"
- ],
- [
-  "moves",
-  "ท่า"
- ],
- [
-  "No moves for this character",
-  "ไม่มีรายการท่าสำหรับตัวละครนี้"
- ],
- [
-  "A Light   B Heavy   C Guard   D Special   •   Arrows assume facing right",
-  "A เบา   B หนัก   C ป้องกัน   D พิเศษ   •   ลูกศรอิงตอนหันขวา"
- ],
- [
-  "Air OK",
-  "ใช้กลางอากาศได้"
- ],
- [
-  "Air",
-  "กลางอากาศ"
- ],
- [
-  "Save / Load State",
-  "บันทึก / โหลดสถานะเกม"
- ],
- [
-  "Save State",
-  "บันทึกสถานะเกม"
- ],
- [
-  "Load State",
-  "โหลดสถานะเกม"
- ],
- [
-  "Unreadable",
-  "อ่านไม่ได้"
- ],
- [
-  "Empty",
-  "ว่าง"
- ],
- [
-  "Slot ",
-  "ช่อง "
- ],
- [
-  "Overwrite save state?",
-  "บันทึกทับสถานะเกมหรือไม่?"
- ],
- [
-  "Load save state?",
-  "โหลดสถานะเกมหรือไม่?"
- ],
- [
-  "This replaces the state in this slot.",
-  "การดำเนินการนี้จะบันทึกทับสถานะเดิมในช่องนี้"
- ],
- [
-  "Progress since this state will be lost.",
-  "ความคืบหน้าหลังจุดที่บันทึกนี้จะหายไป"
- ],
- [
-  "Overwrite",
-  "บันทึกทับ"
- ],
- [
-  "A save state operation is already running.",
-  "กำลังบันทึกหรือโหลดสถานะเกมอยู่"
- ],
- [
-  "Start the game before using save states.",
-  "เข้าเล่นเกมก่อนบันทึกหรือโหลดสถานะเกม"
- ],
- [
-  "Saving slot ",
-  "กำลังบันทึกช่อง "
- ],
- [
-  "Loading slot ",
-  "กำลังโหลดช่อง "
- ],
- [
-  "Saved to slot ",
-  "บันทึกแล้วในช่อง "
- ],
- [
-  "Loaded slot ",
-  "โหลดแล้วจากช่อง "
- ],
- [
-  "Save states are unavailable during video playback.",
-  "บันทึกสถานะเกมระหว่างเล่นวิดีโอไม่ได้"
- ],
- [
-  "Could not create the save state file.",
-  "ไม่สามารถสร้างไฟล์สถานะเกมได้"
- ],
- [
-  "Could not save. Check available storage.",
-  "บันทึกไม่สำเร็จ โปรดตรวจพื้นที่ว่าง"
- ],
- [
-  "Could not save slot ",
-  "ไม่สามารถบันทึกช่อง "
- ],
- [
-  "Could not load slot ",
-  "ไม่สามารถโหลดช่อง "
- ],
- [
-  "This slot is empty.",
-  "ช่องนี้ยังไม่มีข้อมูล"
- ],
- [
-  "This state is incompatible with the current game.",
-  "สถานะเกมนี้ไม่เข้ากับเกมปัจจุบัน"
- ],
- [
-  "This save state file is damaged.",
-  "ไฟล์สถานะเกมนี้เสียหาย"
- ],
- [
-  "Load failed. Restart the game.",
-  "โหลดไม่สำเร็จ โปรดเปิดเกมใหม่"
- ],
- [
-  "Multiple files match ",
-  "พบหลายไฟล์ที่ตรงกับ "
- ],
- [
-  "KeyConfig.v4 has an unrecognized format.",
-  "ไม่รู้จักรูปแบบไฟล์ KeyConfig.v4"
- ],
- [
-  "Could not create ",
-  "ไม่สามารถสร้าง "
- ],
- [
-  "Could not read ",
-  "ไม่สามารถอ่าน "
- ],
- [
-  "Duplicate name in the folder: ",
-  "ชื่อซ้ำในโฟลเดอร์: "
- ],
- [
-  "A file or folder has an invalid name.",
-  "ชื่อไฟล์หรือโฟลเดอร์ไม่ถูกต้อง"
- ],
- [
-  "The selected folder could not be read.",
-  "ไม่สามารถอ่านโฟลเดอร์ที่เลือกได้"
- ],
- [
-  "The selected game folder is nested too deeply.",
-  "โฟลเดอร์เกมที่เลือกซ้อนกันลึกเกินไป"
- ],
- [
-  "Could not list ",
-  "ไม่สามารถอ่านรายการใน "
- ],
- [
-  "Could not remove ",
-  "ไม่สามารถลบ "
- ],
- [
-  "Could not back up the installed game.",
-  "ไม่สามารถสำรองเกมที่ติดตั้งไว้ได้"
- ],
- [
-  "Could not finish the import.",
-  "ไม่สามารถนำเข้าให้เสร็จได้"
- ],
- [
-  "Could not create the import directory.",
-  "ไม่สามารถสร้างโฟลเดอร์นำเข้าได้"
- ],
- [
-  "RBO_Ex3.exe must be the 32-bit Windows game executable.",
-  "RBO_Ex3.exe ต้องเป็นไฟล์เกม Windows แบบ 32 บิต"
- ],
- [
-  "Invalid member in ",
-  "รายการไม่ถูกต้องใน "
- ],
- [
-  "Invalid archive: ",
-  "ไฟล์แพ็กไม่ถูกต้อง: "
- ],
- [
-  "Archive entry too large: ",
-  "รายการในไฟล์แพ็กใหญ่เกินไป: "
- ],
- [
-  "Invalid patch path.",
-  "เส้นทางแพตช์ไม่ถูกต้อง"
- ],
- [
-  "Unexpected file in the Thai patch.",
-  "พบไฟล์ที่ไม่ควรอยู่ในแพตช์ภาษาไทย"
- ],
- [
-  "Patch verification failed for ",
-  "ตรวจสอบแพตช์ไม่ผ่านสำหรับ "
- ],
- [
-  "Invalid patch data for ",
-  "ข้อมูลแพตช์ไม่ถูกต้องสำหรับ "
- ],
- [
-  "Duplicate patch target: ",
-  "เป้าหมายแพตช์ซ้ำ: "
- ],
- [
-  "Unsupported Thai patch package.",
-  "ไม่รองรับชุดแพตช์ภาษาไทยนี้"
- ],
- [
-  "Could not read or apply the Thai patch.",
-  "ไม่สามารถอ่านหรือติดตั้งแพตช์ภาษาไทยได้"
- ],
- [
-  "Thai patch 1.2 is already installed.",
-  "ติดตั้งแพตช์ภาษาไทย 1.2 อยู่แล้ว"
- ],
- [
-  "Import the Japanese game with Extra Scenarios 1–3 first.",
-  "นำเข้าเกมญี่ปุ่นพร้อม Extra Scenarios 1–3 ก่อน"
- ],
- [
-  "Missing DATA/",
-  "ไม่พบ DATA/"
- ],
- [
-  ". Install the Japanese game and Extra Scenarios 1–3.",
-  " โปรดติดตั้งเกมญี่ปุ่นและ Extra Scenarios 1–3"
- ],
- [
-  "Missing Thai patch manifest.",
-  "ไม่พบรายการไฟล์แพตช์ภาษาไทย"
- ],
- [
-  "Unexpected Thai patch component.",
-  "พบส่วนประกอบแพตช์ภาษาไทยที่ไม่คาดหมาย"
- ],
- [
-  "Duplicate Thai patch component.",
-  "ส่วนประกอบแพตช์ภาษาไทยซ้ำ"
- ],
- [
-  "Thai patch bundle is too large.",
-  "ชุดแพตช์ภาษาไทยใหญ่เกินไป"
- ],
- [
-  "Unsupported original for ",
-  "ไม่รองรับไฟล์ต้นฉบับสำหรับ "
- ],
- [
-  ". Use the matching Japanese Expansion 3 installation.",
-  " โปรดใช้ชุดเกมญี่ปุ่น Expansion 3 ที่ตรงกัน"
- ],
- [
-  "File too large for the Thai patch: ",
-  "ไฟล์ใหญ่เกินไปสำหรับแพตช์ภาษาไทย: "
- ],
- [
-  "Invalid resolution backup.",
-  "ไฟล์สำรองความละเอียดไม่ถูกต้อง"
- ],
- [
-  "The patch backup needs recovery.",
-  "ต้องกู้คืนไฟล์สำรองแพตช์ก่อน"
- ],
- [
-  "The backed-up RBO_Ex3.exe is not supported by this patch.",
-  "RBO_Ex3.exe ในไฟล์สำรองไม่ตรงกับรุ่นที่แพตช์รองรับ"
- ],
- [
-  "The backup has no original RBO_Ex3.exe, so the previous language cannot be restored.",
-  "ไม่พบ RBO_Ex3.exe ต้นฉบับในไฟล์สำรอง จึงยังคืนเกมเป็นภาษาก่อนหน้าไม่ได้"
- ],
- [
-  "RBO_Ex3.exe is not supported by this patch.",
-  "RBO_Ex3.exe ไม่ตรงกับรุ่นที่แพตช์รองรับ"
- ],
- [
-  "No Thai patch backup was found.",
-  "ไม่พบข้อมูลสำรองของแพตช์ภาษาไทย"
- ],
- [
-  "RBO_Ex3.exe does not match a supported Japanese, English, or Thai version.",
-  "RBO_Ex3.exe ไม่ตรงกับรุ่นญี่ปุ่น อังกฤษ หรือไทยที่แพตช์รองรับ"
- ],
- [
-  "RBO_Ex3.exe has an unsupported size.",
-  "RBO_Ex3.exe มีขนาดผิดจากรุ่นที่รองรับ"
- ],
- [
-  "Audio test failed",
-  "ทดสอบเสียงไม่สำเร็จ"
- ],
- [
-  "Monsters remaining",
-  "มอนสเตอร์ที่เหลือ"
- ],
- [
-  "Battle in progress",
-  "กำลังต่อสู้"
- ],
- [
-  "Future waves are not included",
-  "ไม่นับมอนสเตอร์ที่จะเกิดในรอบถัดไป"
- ],
- [
-  "Stat Point / Skill Point",
-  "แต้มสเตตัส / แต้มสกิล"
- ],
- [
-  "Enable before choosing your character. Points refill while enabled.",
-  "เปิดก่อนเลือกตัวละคร แต้มจะเติมกลับเต็มขณะเปิดสูตร"
- ],
- [
-  "Stat Point · Keep at 999",
-  "แต้มสเตตัส · คงไว้ที่ 999"
- ],
- [
-  "Skill Point · Keep at 999",
-  "แต้มสกิล · คงไว้ที่ 999"
- ],
- [
-  "Performance mode",
-  "โหมดประสิทธิภาพ"
- ],
- [
-  "Performance mode · ON",
-  "โหมดประสิทธิภาพ · เปิด"
- ],
- [
-  "Performance mode · OFF",
-  "โหมดประสิทธิภาพ · ปิด"
- ],
- [
-  "On",
-  "เปิด"
- ],
- [
-  "Off",
-  "ปิด"
- ]
+  [
+    "PLAY",
+    "เล่นเกม"
+  ],
+  [
+    "OPTIONS",
+    "ตัวเลือก"
+  ],
+  [
+    "PATCH",
+    "แพตช์"
+  ],
+  [
+    "DEBUGGING",
+    "เครื่องมือวิเคราะห์"
+  ],
+  [
+    "‹ OPTIONS",
+    "‹ ตัวเลือก"
+  ],
+  [
+    "‹ PATCH",
+    "‹ แพตช์"
+  ],
+  [
+    "‹ DEBUGGING",
+    "‹ เครื่องมือวิเคราะห์"
+  ],
+  [
+    "CONTROL SETTINGS",
+    "ตั้งค่าปุ่ม"
+  ],
+  [
+    "Control settings",
+    "ตั้งค่าการควบคุม"
+  ],
+  [
+    "Language",
+    "ภาษา"
+  ],
+  [
+    "Version ",
+    "เวอร์ชัน "
+  ],
+  [
+    "Back to main menu",
+    "กลับเมนูหลัก"
+  ],
+  [
+    "Cancel",
+    "ยกเลิก"
+  ],
+  [
+    "OK",
+    "ตกลง"
+  ],
+  [
+    "Done",
+    "เสร็จสิ้น"
+  ],
+  [
+    "Reset",
+    "รีเซ็ต"
+  ],
+  [
+    "Install",
+    "ติดตั้ง"
+  ],
+  [
+    "Remove patch",
+    "ลบแพตช์"
+  ],
+  [
+    "Finished",
+    "เรียบร้อย"
+  ],
+  [
+    "Play Expansion 3",
+    "เล่น Expansion 3"
+  ],
+  [
+    "Import game folder",
+    "นำเข้าโฟลเดอร์เกม"
+  ],
+  [
+    "Import another copy",
+    "นำเข้าเกมอีกชุด"
+  ],
+  [
+    "Choose folder",
+    "เลือกโฟลเดอร์"
+  ],
+  [
+    "Import failed",
+    "นำเข้าไม่สำเร็จ"
+  ],
+  [
+    "Game ready",
+    "เกมพร้อมเล่น"
+  ],
+  [
+    "Thai v1.2",
+    "ภาษาไทย v1.2"
+  ],
+  [
+    "Copying game files… Keep this screen open.",
+    "กำลังคัดลอกไฟล์เกม… โปรดเปิดหน้านี้ค้างไว้"
+  ],
+  [
+    "Select the folder containing RBO_Ex3.exe and DATA.",
+    "เลือกโฟลเดอร์ที่มี RBO_Ex3.exe และ DATA"
+  ],
+  [
+    "Select the folder that contains RBO_Ex3.exe and DATA.",
+    "เลือกโฟลเดอร์ที่มีไฟล์ RBO_Ex3.exe และโฟลเดอร์ DATA"
+  ],
+  [
+    "The game folder could not be imported.",
+    "ไม่สามารถนำเข้าโฟลเดอร์เกมได้"
+  ],
+  [
+    "Import a different copy? The current game and its saves will be kept as the previous import.",
+    "นำเข้าเกมอีกชุดหรือไม่? เกมและเซฟปัจจุบันจะถูกเก็บไว้เป็นชุดก่อนหน้า"
+  ],
+  [
+    "Test audio",
+    "ทดสอบเสียง"
+  ],
+  [
+    "Share last game log",
+    "แชร์บันทึกการเล่นล่าสุด"
+  ],
+  [
+    "Share game log",
+    "แชร์บันทึกเกม"
+  ],
+  [
+    "The last game log could not be read.",
+    "ไม่สามารถอ่านบันทึกเกมล่าสุดได้"
+  ],
+  [
+    "Install Thai Language",
+    "ติดตั้งภาษาไทยในเกม"
+  ],
+  [
+    "Thai Language Installed",
+    "ติดตั้งภาษาไทยในเกมแล้ว"
+  ],
+  [
+    "Remove Thai Language",
+    "ลบภาษาไทยในเกม"
+  ],
+  [
+    "Install Thai patch v1.2",
+    "ติดตั้งแพตช์ภาษาไทย v1.2"
+  ],
+  [
+    "Remove Thai patch",
+    "ลบแพตช์ภาษาไทย"
+  ],
+  [
+    "Restore the files from before the Thai patch, keeping current saves and resolution.",
+    "คืนไฟล์จากก่อนลงแพตช์ไทย โดยเก็บเซฟและความละเอียดปัจจุบันไว้"
+  ],
+  [
+    "Requires a compatible Japanese game with Extra Scenarios 1–3. Only the imported copy is patched. An existing widescreen patch is preserved.",
+    "ต้องใช้ชุดเกมญี่ปุ่นพร้อม Extra Scenario 1–3 ที่เข้ากันได้ แอปจะแก้เฉพาะสำเนาเกมที่นำเข้า ไฟล์นี้จะเก็บ Widescreen ไว้เมื่อ RBO_Ex3.exe มีแพตช์จอกว้างอยู่แล้ว"
+  ],
+  [
+    "Install Widescreen",
+    "ติดตั้งแพตช์จอกว้าง"
+  ],
+  [
+    "Remove Widescreen",
+    "ลบแพตช์จอกว้าง"
+  ],
+  [
+    "Install Widescreen · 1280×720",
+    "ติดตั้งจอกว้าง · 1280×720"
+  ],
+  [
+    "Install widescreen patch",
+    "ติดตั้งแพตช์ Widescreen"
+  ],
+  [
+    "Remove widescreen patch",
+    "ลบแพตช์ Widescreen"
+  ],
+  [
+    "Set the game to 1280×720 (16:9), using marvinelo's patch.",
+    "ตั้งเกมเป็น 1280×720 (16:9) ตามแพตช์ของ marvinelo"
+  ],
+  [
+    "Restore the game resolution to 640×480.",
+    "คืนค่าความละเอียดของเกมเป็น 640×480"
+  ],
+  [
+    "Applying game patch…",
+    "กำลังแก้ไขแพตช์เกม…"
+  ],
+  [
+    "Patch installation is incomplete. Install the patch again to recover before retrying.",
+    "แพตช์ยังติดตั้งไม่เสร็จ กดติดตั้งแพตช์เพื่อกู้คืนก่อนลองอีกครั้ง"
+  ],
+  [
+    "Thai language installed; the existing widescreen patch was preserved.",
+    "ติดตั้งภาษาไทยแล้ว และเก็บแพตช์ Widescreen เดิมไว้"
+  ],
+  [
+    "Thai language installed; this game copy has no widescreen patch.",
+    "ติดตั้งภาษาไทยแล้ว ชุดเกมนี้ยังไม่มีแพตช์ Widescreen"
+  ],
+  [
+    "Restored the files from before the Thai patch.",
+    "คืนไฟล์ก่อนลงแพตช์ภาษาไทยแล้ว"
+  ],
+  [
+    "Widescreen 1280×720 enabled.",
+    "ตั้ง Widescreen 1280×720 แล้ว"
+  ],
+  [
+    "Resolution restored to 640×480.",
+    "คืนค่าความละเอียด 640×480 แล้ว"
+  ],
+  [
+    "Could not patch the game.",
+    "แก้ไขแพตช์เกมไม่สำเร็จ"
+  ],
+  [
+    "Patch failed",
+    "แก้ไขแพตช์ไม่สำเร็จ"
+  ],
+  [
+    "Port by Nakpaaiyaa",
+    "พอร์ตโดย นักป้ายยา"
+  ],
+  [
+    "Thai translation: Monster",
+    "แปลภาษาไทยโดย Monster"
+  ],
+  [
+    "Renderer",
+    "การแสดงผล"
+  ],
+  [
+    "Renderer · CPU",
+    "การแสดงผล · CPU"
+  ],
+  [
+    "Renderer · Vulkan",
+    "การแสดงผล · Vulkan"
+  ],
+  [
+    "Install Turnip Driver",
+    "ติดตั้งไดรเวอร์ Turnip"
+  ],
+  [
+    "Vulkan driver",
+    "ไดรเวอร์ Vulkan"
+  ],
+  [
+    "System driver",
+    "ไดรเวอร์ระบบ"
+  ],
+  [
+    "Installing Turnip driver…",
+    "กำลังติดตั้งไดรเวอร์ Turnip…"
+  ],
+  [
+    "Selected ",
+    "เลือกแล้ว: "
+  ],
+  [
+    "Could not install driver",
+    "ติดตั้งไดรเวอร์ไม่สำเร็จ"
+  ],
+  [
+    "The selected file could not be imported.",
+    "ไม่สามารถนำเข้าไฟล์ที่เลือกได้"
+  ],
+  [
+    "Could not create driver folder.",
+    "ไม่สามารถสร้างโฟลเดอร์ไดรเวอร์ได้"
+  ],
+  [
+    "Could not create temporary folder.",
+    "ไม่สามารถสร้างโฟลเดอร์ชั่วคราวได้"
+  ],
+  [
+    "Could not read the ZIP.",
+    "ไม่สามารถอ่านไฟล์ ZIP ได้"
+  ],
+  [
+    "Could not save the driver.",
+    "ไม่สามารถบันทึกไดรเวอร์ได้"
+  ],
+  [
+    "Too many entries in driver ZIP.",
+    "ไฟล์ ZIP ไดรเวอร์มีไฟล์มากเกินไป"
+  ],
+  [
+    "Driver ZIP is too large.",
+    "ไฟล์ ZIP ไดรเวอร์มีขนาดใหญ่เกินไป"
+  ],
+  [
+    "Duplicate file: ",
+    "ไฟล์ซ้ำ: "
+  ],
+  [
+    "The ZIP needs meta.json at its root.",
+    "ต้องมี meta.json ที่ระดับบนสุดของไฟล์ ZIP"
+  ],
+  [
+    "Invalid driver name or libraryName in meta.json.",
+    "ชื่อไดรเวอร์หรือ libraryName ใน meta.json ไม่ถูกต้อง"
+  ],
+  [
+    "This driver requires a newer Android version.",
+    "ไดรเวอร์นี้ต้องใช้ Android รุ่นใหม่กว่า"
+  ],
+  [
+    " is not an ARM64 Android shared library.",
+    " ไม่ใช่ไลบรารี Android แบบ ARM64"
+  ],
+  [
+    "Controls",
+    "ตั้งค่าปุ่ม"
+  ],
+  [
+    "Character controls",
+    "การควบคุมตัวละคร"
+  ],
+  [
+    "Controls: ",
+    "การตั้งค่าปุ่ม: "
+  ],
+  [
+    "Press a controller button or move the D-pad or left stick.",
+    "กดปุ่มบนจอย หรือขยับ D-pad หรืออนาล็อกซ้าย"
+  ],
+  [
+    "Choose from list",
+    "เลือกจากรายการ"
+  ],
+  [
+    " controller button",
+    " ปุ่มจอย"
+  ],
+  [
+    " game key",
+    " ปุ่มในเกม"
+  ],
+  [
+    ", controller ",
+    ", ปุ่มจอย "
+  ],
+  [
+    ", game key ",
+    ", ปุ่มในเกม "
+  ],
+  [
+    "Could not save the controls.",
+    "ไม่สามารถบันทึกการตั้งค่าปุ่มได้"
+  ],
+  [
+    "Reset defaults",
+    "คืนค่าเริ่มต้น"
+  ],
+  [
+    "Restore the default game keys and controller buttons?",
+    "คืนค่าปุ่มในเกมและปุ่มจอยเป็นค่าเริ่มต้นหรือไม่?"
+  ],
+  [
+    "The left stick follows the D-pad. Selecting a binding already in use swaps the two.",
+    "อนาล็อกซ้ายใช้ค่าเดียวกับ D-pad หากเลือกปุ่มที่ใช้อยู่แล้ว ระบบจะสลับปุ่มทั้งสองให้"
+  ],
+  [
+    "Action",
+    "การกระทำ"
+  ],
+  [
+    "Game key",
+    "ปุ่มในเกม"
+  ],
+  [
+    "Controller",
+    "จอยควบคุม"
+  ],
+  [
+    "Move up",
+    "ขึ้น"
+  ],
+  [
+    "Move down",
+    "ลง"
+  ],
+  [
+    "Move left",
+    "ซ้าย"
+  ],
+  [
+    "Move right",
+    "ขวา"
+  ],
+  [
+    "Weak attack",
+    "โจมตีเบา"
+  ],
+  [
+    "Strong attack",
+    "โจมตีหนัก"
+  ],
+  [
+    "Guard",
+    "ป้องกัน"
+  ],
+  [
+    "Special",
+    "พิเศษ"
+  ],
+  [
+    "Jump",
+    "กระโดด"
+  ],
+  [
+    "Start",
+    "เริ่ม"
+  ],
+  [
+    "D-pad up",
+    "D-pad ขึ้น"
+  ],
+  [
+    "D-pad down",
+    "D-pad ลง"
+  ],
+  [
+    "D-pad left",
+    "D-pad ซ้าย"
+  ],
+  [
+    "D-pad right",
+    "D-pad ขวา"
+  ],
+  [
+    "Could not start the game",
+    "เปิดเกมไม่สำเร็จ"
+  ],
+  [
+    "Return to the launcher?",
+    "กลับไปหน้าแรกของแอปหรือไม่?"
+  ],
+  [
+    "Exit game",
+    "ออกจากเกม"
+  ],
+  [
+    "Starting Expansion 3…",
+    "กำลังเปิด Expansion 3…"
+  ],
+  [
+    "Toggle on-screen controls",
+    "เปิดหรือปิดปุ่มสัมผัส"
+  ],
+  [
+    "Directional pad",
+    "ปุ่มทิศทาง"
+  ],
+  [
+    "Cheat",
+    "สูตรช่วยเล่น"
+  ],
+  [
+    "Cheats",
+    "สูตรช่วยเล่นสำหรับตัวละคร"
+  ],
+  [
+    "Cheats are unavailable for this EX3 executable.",
+    "ไม่รองรับสูตรช่วยเล่นสำหรับไฟล์ EX3 นี้"
+  ],
+  [
+    "Enter a stage before using cheats.",
+    "เข้าเล่นในด่านก่อนใช้สูตรช่วยเล่น"
+  ],
+  [
+    "Inf HP · Refill to max",
+    "HP ไม่ลด · เติมจนเต็ม"
+  ],
+  [
+    "Inf SP · Refill to max",
+    "SP ไม่ลด · เติมจนเต็ม"
+  ],
+  [
+    "Open Move List",
+    "เปิดรายการท่า"
+  ],
+  [
+    "Save or Load State",
+    "บันทึกหรือโหลดสถานะเกม"
+  ],
+  [
+    "Move List",
+    "รายการท่า"
+  ],
+  [
+    "Monsters",
+    "มอนสเตอร์"
+  ],
+  [
+    "Status",
+    "สถานะ"
+  ],
+  [
+    "Close companion",
+    "ปิดหน้าข้อมูลเกม"
+  ],
+  [
+    "LIVE",
+    "อัปเดตสด"
+  ],
+  [
+    "Game data",
+    "ข้อมูลจากเกม"
+  ],
+  [
+    "Only spawned enemies in this area are counted",
+    "นับเฉพาะมอนสเตอร์ที่เกิดแล้วในพื้นที่นี้"
+  ],
+  [
+    "Waiting for gameplay · Character data appears after starting a stage",
+    "รอตัวละครเข้าเกม · ข้อมูลจะแสดงเมื่อเริ่มเล่น"
+  ],
+  [
+    "Monsters in this area. Tap to show the next page.",
+    "มอนสเตอร์ในพื้นที่นี้ แตะเพื่อดูหน้าถัดไป"
+  ],
+  [
+    "FIELD REPORT",
+    "ข้อมูลพื้นที่"
+  ],
+  [
+    "Monsters in this area",
+    "มอนสเตอร์ในพื้นที่นี้"
+  ],
+  [
+    "REMAINING",
+    "คงเหลือ"
+  ],
+  [
+    "Area clear",
+    "กำจัดหมดแล้ว"
+  ],
+  [
+    "Waiting for gameplay",
+    "รอเข้าเล่นเกม"
+  ],
+  [
+    "No spawned enemies remain in this area",
+    "ไม่มีมอนสเตอร์ที่เกิดแล้วเหลืออยู่ในพื้นที่นี้"
+  ],
+  [
+    "The list updates when entering a battle area",
+    "รายการจะอัปเดตเมื่อเข้าสู่ฉากต่อสู้"
+  ],
+  [
+    "Remaining",
+    "เหลืออยู่"
+  ],
+  [
+    "Loading image",
+    "กำลังโหลดภาพ"
+  ],
+  [
+    "SPAWNED ENEMIES ONLY",
+    "เฉพาะมอนสเตอร์ที่เกิดแล้ว"
+  ],
+  [
+    "Tap to change page",
+    "แตะเพื่อเปลี่ยนหน้า"
+  ],
+  [
+    "LIVE FIELD COUNT",
+    "จำนวนในพื้นที่ขณะนี้"
+  ],
+  [
+    "CHARACTER STATUS",
+    "สถานะตัวละคร"
+  ],
+  [
+    "Adventure awaits",
+    "เตรียมออกผจญภัย"
+  ],
+  [
+    "Select a character and enter the game",
+    "เลือกตัวละครแล้วเข้าเกม"
+  ],
+  [
+    "Male",
+    "ชาย"
+  ],
+  [
+    "Female",
+    "หญิง"
+  ],
+  [
+    "CHARACTER",
+    "ตัวละคร"
+  ],
+  [
+    "Ready for battle",
+    "พร้อมต่อสู้"
+  ],
+  [
+    "Waiting for character",
+    "รอตัวละครเข้าเกม"
+  ],
+  [
+    "LEVEL",
+    "เลเวล"
+  ],
+  [
+    "Strength",
+    "พละกำลัง"
+  ],
+  [
+    "Agility",
+    "ความคล่องตัว"
+  ],
+  [
+    "Vitality",
+    "ความทนทาน"
+  ],
+  [
+    "Intelligence",
+    "สติปัญญา"
+  ],
+  [
+    "Dexterity",
+    "ความแม่นยำ"
+  ],
+  [
+    "Luck",
+    "โชค"
+  ],
+  [
+    "EXP",
+    "ค่าประสบการณ์"
+  ],
+  [
+    "STAT POINTS",
+    "แต้มสถานะ"
+  ],
+  [
+    "SKILL POINTS",
+    "แต้มสกิล"
+  ],
+  [
+    "Character status: waiting for gameplay",
+    "สถานะตัวละคร: รอเข้าเล่นเกม"
+  ],
+  [
+    "Swordman",
+    "นักดาบ"
+  ],
+  [
+    "Archer",
+    "นักธนู"
+  ],
+  [
+    "Magician",
+    "นักเวท"
+  ],
+  [
+    "Merchant",
+    "พ่อค้า"
+  ],
+  [
+    "Acolyte",
+    "นักบวช"
+  ],
+  [
+    "Thief",
+    "โจร"
+  ],
+  [
+    "Novice",
+    "โนวิซ"
+  ],
+  [
+    "Auto",
+    "ออโต้"
+  ],
+  [
+    "Follow the active character",
+    "ติดตามตัวละครที่กำลังเล่น"
+  ],
+  [
+    "Previous class",
+    "อาชีพก่อนหน้า"
+  ],
+  [
+    "Next class",
+    "อาชีพถัดไป"
+  ],
+  [
+    "Switch character variant",
+    "สลับตัวละครชายหรือหญิง"
+  ],
+  [
+    "Close Move List",
+    "ปิดรายการท่า"
+  ],
+  [
+    "moves",
+    "ท่า"
+  ],
+  [
+    "No moves for this character",
+    "ไม่มีรายการท่าสำหรับตัวละครนี้"
+  ],
+  [
+    "A Light   B Heavy   C Guard   D Special   •   Arrows assume facing right",
+    "A เบา   B หนัก   C ป้องกัน   D พิเศษ   •   ลูกศรอิงตอนหันขวา"
+  ],
+  [
+    "Air OK",
+    "ใช้กลางอากาศได้"
+  ],
+  [
+    "Air",
+    "กลางอากาศ"
+  ],
+  [
+    "Save / Load State",
+    "บันทึก / โหลดสถานะเกม"
+  ],
+  [
+    "Save State",
+    "บันทึกสถานะเกม"
+  ],
+  [
+    "Load State",
+    "โหลดสถานะเกม"
+  ],
+  [
+    "Unreadable",
+    "อ่านไม่ได้"
+  ],
+  [
+    "Empty",
+    "ว่าง"
+  ],
+  [
+    "Slot ",
+    "ช่อง "
+  ],
+  [
+    "Overwrite save state?",
+    "บันทึกทับสถานะเกมหรือไม่?"
+  ],
+  [
+    "Load save state?",
+    "โหลดสถานะเกมหรือไม่?"
+  ],
+  [
+    "This replaces the state in this slot.",
+    "การดำเนินการนี้จะบันทึกทับสถานะเดิมในช่องนี้"
+  ],
+  [
+    "Progress since this state will be lost.",
+    "ความคืบหน้าหลังจุดที่บันทึกนี้จะหายไป"
+  ],
+  [
+    "Overwrite",
+    "บันทึกทับ"
+  ],
+  [
+    "A save state operation is already running.",
+    "กำลังบันทึกหรือโหลดสถานะเกมอยู่"
+  ],
+  [
+    "Start the game before using save states.",
+    "เข้าเล่นเกมก่อนบันทึกหรือโหลดสถานะเกม"
+  ],
+  [
+    "Saving slot ",
+    "กำลังบันทึกช่อง "
+  ],
+  [
+    "Loading slot ",
+    "กำลังโหลดช่อง "
+  ],
+  [
+    "Saved to slot ",
+    "บันทึกแล้วในช่อง "
+  ],
+  [
+    "Loaded slot ",
+    "โหลดแล้วจากช่อง "
+  ],
+  [
+    "Save states are unavailable during video playback.",
+    "บันทึกสถานะเกมระหว่างเล่นวิดีโอไม่ได้"
+  ],
+  [
+    "Could not create the save state file.",
+    "ไม่สามารถสร้างไฟล์สถานะเกมได้"
+  ],
+  [
+    "Could not save. Check available storage.",
+    "บันทึกไม่สำเร็จ โปรดตรวจพื้นที่ว่าง"
+  ],
+  [
+    "Could not save slot ",
+    "ไม่สามารถบันทึกช่อง "
+  ],
+  [
+    "Could not load slot ",
+    "ไม่สามารถโหลดช่อง "
+  ],
+  [
+    "This slot is empty.",
+    "ช่องนี้ยังไม่มีข้อมูล"
+  ],
+  [
+    "This state is incompatible with the current game.",
+    "สถานะเกมนี้ไม่เข้ากับเกมปัจจุบัน"
+  ],
+  [
+    "This save state file is damaged.",
+    "ไฟล์สถานะเกมนี้เสียหาย"
+  ],
+  [
+    "Load failed. Restart the game.",
+    "โหลดไม่สำเร็จ โปรดเปิดเกมใหม่"
+  ],
+  [
+    "Multiple files match ",
+    "พบหลายไฟล์ที่ตรงกับ "
+  ],
+  [
+    "KeyConfig.v4 has an unrecognized format.",
+    "ไม่รู้จักรูปแบบไฟล์ KeyConfig.v4"
+  ],
+  [
+    "Could not create ",
+    "ไม่สามารถสร้าง "
+  ],
+  [
+    "Could not read ",
+    "ไม่สามารถอ่าน "
+  ],
+  [
+    "Duplicate name in the folder: ",
+    "ชื่อซ้ำในโฟลเดอร์: "
+  ],
+  [
+    "A file or folder has an invalid name.",
+    "ชื่อไฟล์หรือโฟลเดอร์ไม่ถูกต้อง"
+  ],
+  [
+    "The selected folder could not be read.",
+    "ไม่สามารถอ่านโฟลเดอร์ที่เลือกได้"
+  ],
+  [
+    "The selected game folder is nested too deeply.",
+    "โฟลเดอร์เกมที่เลือกซ้อนกันลึกเกินไป"
+  ],
+  [
+    "Could not list ",
+    "ไม่สามารถอ่านรายการใน "
+  ],
+  [
+    "Could not remove ",
+    "ไม่สามารถลบ "
+  ],
+  [
+    "Could not back up the installed game.",
+    "ไม่สามารถสำรองเกมที่ติดตั้งไว้ได้"
+  ],
+  [
+    "Could not finish the import.",
+    "ไม่สามารถนำเข้าให้เสร็จได้"
+  ],
+  [
+    "Could not create the import directory.",
+    "ไม่สามารถสร้างโฟลเดอร์นำเข้าได้"
+  ],
+  [
+    "RBO_Ex3.exe must be the 32-bit Windows game executable.",
+    "RBO_Ex3.exe ต้องเป็นไฟล์เกม Windows แบบ 32 บิต"
+  ],
+  [
+    "Invalid member in ",
+    "รายการไม่ถูกต้องใน "
+  ],
+  [
+    "Invalid archive: ",
+    "ไฟล์แพ็กไม่ถูกต้อง: "
+  ],
+  [
+    "Archive entry too large: ",
+    "รายการในไฟล์แพ็กใหญ่เกินไป: "
+  ],
+  [
+    "Invalid patch path.",
+    "เส้นทางแพตช์ไม่ถูกต้อง"
+  ],
+  [
+    "Unexpected file in the Thai patch.",
+    "พบไฟล์ที่ไม่ควรอยู่ในแพตช์ภาษาไทย"
+  ],
+  [
+    "Patch verification failed for ",
+    "ตรวจสอบแพตช์ไม่ผ่านสำหรับ "
+  ],
+  [
+    "Invalid patch data for ",
+    "ข้อมูลแพตช์ไม่ถูกต้องสำหรับ "
+  ],
+  [
+    "Duplicate patch target: ",
+    "เป้าหมายแพตช์ซ้ำ: "
+  ],
+  [
+    "Unsupported Thai patch package.",
+    "ไม่รองรับชุดแพตช์ภาษาไทยนี้"
+  ],
+  [
+    "Could not read or apply the Thai patch.",
+    "ไม่สามารถอ่านหรือติดตั้งแพตช์ภาษาไทยได้"
+  ],
+  [
+    "Thai patch 1.2 is already installed.",
+    "ติดตั้งแพตช์ภาษาไทย 1.2 อยู่แล้ว"
+  ],
+  [
+    "Import the Japanese game with Extra Scenarios 1–3 first.",
+    "นำเข้าเกมญี่ปุ่นพร้อม Extra Scenarios 1–3 ก่อน"
+  ],
+  [
+    "Missing DATA/",
+    "ไม่พบ DATA/"
+  ],
+  [
+    ". Install the Japanese game and Extra Scenarios 1–3.",
+    " โปรดติดตั้งเกมญี่ปุ่นและ Extra Scenarios 1–3"
+  ],
+  [
+    "Missing Thai patch manifest.",
+    "ไม่พบรายการไฟล์แพตช์ภาษาไทย"
+  ],
+  [
+    "Unexpected Thai patch component.",
+    "พบส่วนประกอบแพตช์ภาษาไทยที่ไม่คาดหมาย"
+  ],
+  [
+    "Duplicate Thai patch component.",
+    "ส่วนประกอบแพตช์ภาษาไทยซ้ำ"
+  ],
+  [
+    "Thai patch bundle is too large.",
+    "ชุดแพตช์ภาษาไทยใหญ่เกินไป"
+  ],
+  [
+    "Unsupported original for ",
+    "ไม่รองรับไฟล์ต้นฉบับสำหรับ "
+  ],
+  [
+    ". Use the matching Japanese Expansion 3 installation.",
+    " โปรดใช้ชุดเกมญี่ปุ่น Expansion 3 ที่ตรงกัน"
+  ],
+  [
+    "File too large for the Thai patch: ",
+    "ไฟล์ใหญ่เกินไปสำหรับแพตช์ภาษาไทย: "
+  ],
+  [
+    "Invalid resolution backup.",
+    "ไฟล์สำรองความละเอียดไม่ถูกต้อง"
+  ],
+  [
+    "The patch backup needs recovery.",
+    "ต้องกู้คืนไฟล์สำรองแพตช์ก่อน"
+  ],
+  [
+    "The backed-up RBO_Ex3.exe is not supported by this patch.",
+    "RBO_Ex3.exe ในไฟล์สำรองไม่ตรงกับรุ่นที่แพตช์รองรับ"
+  ],
+  [
+    "The backup has no original RBO_Ex3.exe, so the previous language cannot be restored.",
+    "ไม่พบ RBO_Ex3.exe ต้นฉบับในไฟล์สำรอง จึงยังคืนเกมเป็นภาษาก่อนหน้าไม่ได้"
+  ],
+  [
+    "RBO_Ex3.exe is not supported by this patch.",
+    "RBO_Ex3.exe ไม่ตรงกับรุ่นที่แพตช์รองรับ"
+  ],
+  [
+    "No Thai patch backup was found.",
+    "ไม่พบข้อมูลสำรองของแพตช์ภาษาไทย"
+  ],
+  [
+    "RBO_Ex3.exe does not match a supported Japanese, English, or Thai version.",
+    "RBO_Ex3.exe ไม่ตรงกับรุ่นญี่ปุ่น อังกฤษ หรือไทยที่แพตช์รองรับ"
+  ],
+  [
+    "RBO_Ex3.exe has an unsupported size.",
+    "RBO_Ex3.exe มีขนาดผิดจากรุ่นที่รองรับ"
+  ],
+  [
+    "Audio test failed",
+    "ทดสอบเสียงไม่สำเร็จ"
+  ],
+  [
+    "Monsters remaining",
+    "มอนสเตอร์ที่เหลือ"
+  ],
+  [
+    "Battle in progress",
+    "กำลังต่อสู้"
+  ],
+  [
+    "Future waves are not included",
+    "ไม่นับมอนสเตอร์ที่จะเกิดในรอบถัดไป"
+  ],
+  [
+    "Stat Point / Skill Point",
+    "แต้มสเตตัส / แต้มสกิล"
+  ],
+  [
+    "Enable before choosing your character. Points refill while enabled.",
+    "เปิดก่อนเลือกตัวละคร แต้มจะเติมกลับเต็มขณะเปิดสูตร"
+  ],
+  [
+    "Stat Point · Keep at 999",
+    "แต้มสเตตัส · คงไว้ที่ 999"
+  ],
+  [
+    "Skill Point · Keep at 999",
+    "แต้มสกิล · คงไว้ที่ 999"
+  ],
+  [
+    "Performance mode",
+    "โหมดประสิทธิภาพ"
+  ],
+  [
+    "Performance mode · ON",
+    "โหมดประสิทธิภาพ · เปิด"
+  ],
+  [
+    "Performance mode · OFF",
+    "โหมดประสิทธิภาพ · ปิด"
+  ],
+  [
+    "On",
+    "เปิด"
+  ],
+  [
+    "Off",
+    "ปิด"
+  ],
+  [
+    "LAN multiplayer",
+    "เล่นร่วมกันผ่าน LAN"
+  ]
 ]

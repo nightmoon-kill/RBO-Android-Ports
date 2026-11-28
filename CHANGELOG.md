@@ -1,3 +1,71 @@
+# RBO Android 0.7.0 — LAN Experimental
+
+**Experimental / Pre-release · รุ่นทดลอง**
+
+## ภาษาไทย
+
+### เล่นร่วมกันผ่าน LAN
+
+- เพิ่มเมนู **LAN multiplayer → Create room / Join room** เจ้าห้องเป็น **P1** ผู้เข้าร่วมเป็น **P2**
+- เชื่อมต่อผ่าน Wi-Fi วงเดียวกัน ด้วย IPv4 และรหัสห้อง 6 หลัก เมื่อ P2 พร้อม เจ้าห้องกด **Start game**
+- แต่ละเครื่องรันเกมเองและแลกเปลี่ยนข้อมูลปุ่ม รุ่นนี้ยังไม่ได้ใช้การส่งภาพจากเจ้าห้อง
+- ไม่ตรวจเทียบไฟล์เกมก่อนเข้าห้อง แยกข้อความรหัสห้องผิดและเวอร์ชัน LAN ไม่ตรงกันให้ชัดเจน
+- ใช้ปุ่มสัมผัสหรือจอยของแต่ละเครื่องควบคุมผู้เล่นของตน พร้อมป้ายแสดง LAN · P1 / P2
+
+### เสียงและประสิทธิภาพ
+
+- เรียกขั้นตอนเปิดเสียงและขอ audio focus หลังเริ่มเกมผ่านห้อง LAN เพื่อให้ระบบเสียงกลับมาทำงานตามวงจรปกติของแอป
+- ใช้ Vulkan และ Turnip ตามที่เลือกใน Options พร้อมเปิดตัวเร่งประสิทธิภาพสำหรับ LAN
+- รวมข้อมูลปุ่มแต่ละรอบเป็นแพ็กเก็ต 16 ไบต์ ส่งครั้งเดียว และนำบัฟเฟอร์กลับมาใช้ซ้ำ เพื่อลดการเรียกส่งข้อมูลและการสร้างออบเจ็กต์ระหว่างเล่น
+
+### วิธีลองและข้อจำกัด
+
+1. ติดตั้ง **0.7.0 ทั้งสองเครื่อง** นำเข้าเกม Expansion 3 ของแต่ละเครื่อง แล้วเชื่อม Wi-Fi เดียวกัน
+2. เลือก **Options → Renderer → Vulkan** หากต้องการใช้ Vulkan
+3. P1 สร้างห้อง แล้วให้ P2 กรอก IP และรหัสห้อง จากนั้น P1 กดเริ่มเกม
+
+- LAN ใช้ **สำเนา SaveData ชั่วคราวจากเจ้าห้อง** ผลการเล่นยังไม่รวมกลับเข้าเซฟหลักของทั้งสองเครื่อง
+- ใน LAN ปิดสูตร, Save State และหน้าข้อมูลแบบพักเกมบนจอเดียว พร้อมข้ามอินโทร ส่วนจอรองยังเปิดดูข้อมูลได้
+- ออกจากเกมหรือส่งแอปไปเบื้องหลังจะตัดห้อง ยังไม่มีเข้าร่วมกลางด่าน เชื่อมต่อกลับ หรือค้นหาห้องอัตโนมัติ
+- ระบบหยุดเซสชันเมื่อการเชื่อมต่อขาดหรือข้อมูลตรวจสถานะไม่ตรงกัน การตรวจนี้ครอบคลุม CPU และโปรไฟล์บางส่วน ไม่ได้รับประกันว่าทุกสถานะเกมจะตรงกันตลอดด่าน
+- มีรายงานจากผู้ใช้งานว่า LAN เชื่อมเล่นร่วมกันได้ ส่วนเสียงและประสิทธิภาพของ APK 0.7.0 ยังรอผลทดสอบบน Android สองเครื่องจริง
+- ตรวจการสร้าง APK ลายเซ็น และไฟล์ภายในแล้ว ทดสอบเครือข่าย 654 ข้อ ทางรับปุ่ม native และชุดคำนวณเอฟเฟกต์ 30,000 กรณีผ่าน
+
+## English
+
+### LAN multiplayer
+
+- Adds **LAN multiplayer → Create room / Join room**. The host is **P1** and the joining player is **P2**.
+- Connect over the same Wi-Fi LAN using an IPv4 address and a six-digit room code. When P2 is ready, the host selects **Start game**.
+- Each device runs the game and exchanges inputs. This build does not stream video from the host.
+- Does not compare game files before joining. Wrong room codes and incompatible LAN versions have separate messages.
+- Each device's touch controls or controller operates its assigned player, with a LAN · P1 / P2 label.
+
+### Audio and performance
+
+- Runs the normal audio activation and audio-focus sequence after deferred LAN startup so sound output can become active.
+- Honors the Vulkan/Turnip selection in Options and enables performance acceleration for LAN.
+- Sends each input exchange as one reusable 16-byte packet to reduce socket writes and per-poll allocations.
+
+### Trying the build and limitations
+
+1. Install **0.7.0 on both devices**, import your Expansion 3 files, and connect to the same Wi-Fi.
+2. Select **Options → Renderer → Vulkan** to use Vulkan.
+3. P1 creates a room; P2 enters its IP address and code; P1 then starts the game.
+
+- LAN uses a **temporary copy of the host's SaveData**. Session progress is not merged back into either device's main saves.
+- Cheats, Save States and the paused single-screen companion are disabled in LAN, and the intro is skipped. Secondary-display information remains available.
+- Leaving or backgrounding the game disconnects the session. Mid-stage joining, reconnect and automatic room discovery are not implemented.
+- Connection failures or state-check mismatches stop the session. Checks cover the CPU and selected profile data, not every part of the game world.
+- Users have reported successful LAN play. The final 0.7.0 audio and performance changes still need verification on two Android devices.
+- APK build, signature and contents were checked. The 654 network checks, native input-hook tests and 30,000 effect-calculation comparisons pass.
+
+[Source and build instructions](https://github.com/nightmoon-kill/RBO-Android-Ports/tree/main/Android/vulkan) · [LAN guide](https://github.com/nightmoon-kill/RBO-Android-Ports/blob/main/Android/vulkan/LAN.md)
+
+Requires **Android 9+ / ARM64** and your own game files. APK package: `com.nakpaaiyaa.rbo.cmp0600`. In-place updates require the same package ID and signing certificate. Download the APK and SHA-256 file from **Assets**.
+
+---
+
 # RBO Android 0.6.7
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english)

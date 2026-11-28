@@ -192,6 +192,10 @@ static void g_RenderFile(void){
 }
 static void mc_Run(void){
     if(mv.open){
+#ifdef RBO_LAN
+        extern int lan_game_active(void);
+        if(lan_game_active()){mv.running=0;mv.ended=1;mv.ev_pending=1;g_bgm.playing=0;RET(0);return;}
+#endif
         if(mv.paused) mv.paused=0; else if(!mv.running){ mv.running=1; mv.last_us=0; mv.ended=0; mv.played=0; mv.frames=0; }
         g_bgm.playing=1; RET(0); return;
     }

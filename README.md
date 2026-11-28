@@ -1,5 +1,9 @@
 # Ragnarok Battle Offline · RBO Android
 
+> **[0.7.0 LAN Experimental — pre-release](https://github.com/nightmoon-kill/RBO-Android-Ports/releases/tag/RBO_Android_0.7.0)** · [คู่มือ LAN / LAN guide](Android/vulkan/LAN.md)
+>
+> รุ่นทดลอง LAN: เจ้าห้อง P1 / ผู้เข้าร่วม P2 · Experimental LAN: host P1 / joining player P2.
+
 **Ragnarok Battle Offline Recomp for Android**
 
 Special thanks to [https://github.com/RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) as well for letting me fork their project and build on it!
