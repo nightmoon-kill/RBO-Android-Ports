@@ -2,6 +2,12 @@
 
 **Ragnarok Battle Offline Expansion 3 for Android ARM64**
 
+## Screenshots / ภาพตัวอย่าง
+<img width="5712" height="4284" alt="IMG_0100" src="https://github.com/user-attachments/assets/d4beee92-758f-4d1b-a52a-8326ba7c3585" />
+<img width="5712" height="4284" alt="IMG_0101" src="https://github.com/user-attachments/assets/9af6e13e-ba69-4639-9c5f-475a741d68a6" />
+<img width="1920" height="1080" alt="Screenshot_20261128-124614" src="https://github.com/user-attachments/assets/f32d64db-ddc1-4a70-8858-91321cb076fa" />
+<img width="1920" height="1080" alt="Screenshot_20261128-124605" src="https://github.com/user-attachments/assets/51b4629f-b285-4946-b360-bb4ced51593d" />
+
 [Download APK](https://github.com/nightmoon-kill/RBO-Android-Ports/releases) · [Changelog / รายการอัปเดต](CHANGELOG.md) · [Source & build](Android/vulkan/README.md)
 
 [ภาษาไทย](#ภาษาไทย) · [English](#english)
@@ -93,13 +99,6 @@ This **Android port** builds on [RBOios/RBOFFios](https://github.com/RBOios/RBOF
 - Change Performance mode before starting the game. Performance depends on hardware, heat, scene complexity and the driver.
 - An in-place update preserves imported game data and saves when the package ID and signing certificate match. States containing native acceleration hooks require a compatible app implementation.
 - User testing has been reported on **AYN Odin 3 and Retroid Pocket Duo**.
-
-## Screenshots / ภาพตัวอย่าง
-
-<img width="2340" height="1080" alt="RBO Android screenshot 1" src="https://github.com/user-attachments/assets/6793a5d0-fc05-403b-b986-e1c2335aaecf" />
-<img width="2340" height="1080" alt="RBO Android screenshot 2" src="https://github.com/user-attachments/assets/1c57f012-5119-41c7-ac85-2d25e7033d50" />
-<img width="2340" height="1080" alt="RBO Android screenshot 3" src="https://github.com/user-attachments/assets/32e46849-17de-4e9b-af8a-b9d255b464f5" />
-<img width="2340" height="1080" alt="RBO Android screenshot 4" src="https://github.com/user-attachments/assets/f3cfa202-f027-463e-89bf-1a2643d013d9" />
 
 ## Source & credits / ซอร์สและเครดิต
 
