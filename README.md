@@ -1,6 +1,8 @@
 # Ragnarok Battle Offline · RBO Android
 
-**Ragnarok Battle Offline Expansion 3 for Android ARM64**
+**Ragnarok Battle Offline Recomp for Android ARM64**
+
+All content in this repository, including the game itself, was written with Codex AI.
 
 ## Screenshots / ภาพตัวอย่าง
 <img width="5712" height="4284" alt="IMG_0100" src="https://github.com/user-attachments/assets/d4beee92-758f-4d1b-a52a-8326ba7c3585" />
