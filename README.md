@@ -2,6 +2,7 @@
 
 **Ragnarok Battle Offline Recomp for Android**
 
+Special thanks to [https://github.com/RBOios/RBOFFios](https://github.com/RBOios/RBOFFios) as well for letting me fork their project and build on it!
 All content in this repository, including the game itself, was written with Codex AI.
 
 ## Screenshots / ภาพตัวอย่าง
