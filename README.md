@@ -1,5 +1,9 @@
 # Ragnarok Battle Offline · Android Port
 
+**[RBO Android 0.6.7 — download](https://github.com/nightmoon-kill/RBO-Android-Ports/releases/tag/v0.6.7)** · [Changelog / รายการอัปเดต](CHANGELOG.md)
+
+Vulkan rendering and native effect preparation, a bounded resource cache with background read-ahead, HP/SP and 999-point cheats, Move List / Monsters / Status companion tabs, ENG / THAI, and MPEG Layer I intro audio. User-tested on Snapdragon 7 Gen 4.
+
 <img width="2340" height="1080" alt="Screenshot_20261127_165211" src="https://github.com/user-attachments/assets/6793a5d0-fc05-403b-b986-e1c2335aaecf" />
 <img width="2340" height="1080" alt="Screenshot_20261127_165221" src="https://github.com/user-attachments/assets/1c57f012-5119-41c7-ac85-2d25e7033d50" />
 <img width="2340" height="1080" alt="Screenshot_20261127_115438" src="https://github.com/user-attachments/assets/32e46849-17de-4e9b-af8a-b9d255b464f5" />
@@ -7,14 +11,13 @@
 
 The whole thing was vibe-coded using Codex.
 
-[ภาษาไทย](#ภาษาไทย) · [English](#english) 
+[ภาษาไทย](#ภาษาไทย) · [English](#english)
 
-**[Android 0.5.9 source and build instructions](Android/vulkan/README.md)** · [Changelog / รายการเปลี่ยนแปลง](CHANGELOG.md)
+**[Android 0.6.7 source and build instructions](Android/vulkan/README.md)** · [Companion and implementation notes](Android/vulkan/COMPANION.md)
 
-ซอร์ส 0.5.9 เพิ่ม Move List สำหรับเครื่องจอเดียวและสองจอ และรวมเมนู ตัวเรนเดอร์ Vulkan และการสลับไดรเวอร์ Turnip สคริปต์ใช้ APK 0.5.2 เป็นฐานเพื่อรวมเอนจินและฟีเจอร์เดิม
+ซอร์สสำหรับ RBO Android 0.6.7 รวมตัวเรนเดอร์ Vulkan, Performance mode, สูตรช่วยเล่น, จอรองสามแท็บ, ภาษา ENG / THAI และเสียงอินโทร ใช้ไฟล์เกม Expansion 3 ของผู้เล่นเอง
 
-The 0.5.9 source adds the Move List for single- and dual-screen devices and includes the launcher menus, Vulkan renderer, and Turnip driver selection. Its build uses the 0.5.2 APK for the existing engine and features. The original Android project remains in [Android](Android/README.md).
-
+The Android source includes Vulkan and Turnip selection, performance controls, cheats, companion display tabs, localization, and intro audio. The build uses the checked-in engine APK as its base. The original Android project is in [Android](Android/README.md).
 
 ## ภาษาไทย
 

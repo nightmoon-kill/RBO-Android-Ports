@@ -1,4 +1,16 @@
-# RBO Android 0.5.9
+# RBO Android 0.6.7
+
+See the [release changelog](../../CHANGELOG.md) for the complete feature description.
+The companion provides Move List / Monsters / Status for the active single
+character. Secondary displays start on Monsters; single-screen devices can open
+the same tabs from the in-game Move List control. Options includes ENG / THAI
+(default ENG), renderer/driver selection, and Performance mode (default ON).
+
+Cheat opens HP/SP and Stat Point / Skill Point controls. Point switches keep each
+enabled point type at 999 and can be enabled before character selection.
+MPEG Layer I intro audio is decoded in software and mixed with the game output.
+
+Implementation and validation details are in [COMPANION.md](COMPANION.md).
 
 This build uses the original `RBO-Android-0.5.2-ARM64.apk` as its input. It keeps
 the original engine and assets, adds the Vulkan renderer and launcher menus, and
@@ -14,8 +26,9 @@ icon opens the ten save-state slots with save times and gameplay thumbnails.
 The build uses the checked-in [0.5.2 APK](../../downloads/RBO-Android-0.5.2-ARM64.apk)
 and checks its SHA-256. On Linux x86-64, install OpenJDK, Python 3, CMake, Ninja, Android Platform
 35, Build Tools 35.0.0, NDK r27d, Eclipse Compiler for Java (ECJ), and Apktool
-2.12.1. Sign with the same key used for the previous Vulkan test APK to update
-that app in place.
+2.12.1. The built app ID is `com.nakpaaiyaa.rbo.cmp0600`. An in-place update requires
+that ID and the same certificate as the installed application. Signing keys are
+not included in this repository.
 
 ```bash
 export RBO_BUILD_TOOLS=/path/to/android-sdk/build-tools/35.0.0
@@ -30,10 +43,16 @@ export APK_KEYSTORE_PASSWORD
 bash Android/vulkan/build.sh
 ```
 
-The output is `Android/vulkan/build/RBO-Android-0.5.9-Save-State-ARM64.apk`.
+The output is `Android/vulkan/build/RBO-Android-0.6.7-Companion-ARM64.apk`.
 Supply your own signing material and compatible Turnip driver ZIPs.
 
 The bundled AdrenoTools source is from revision
 `8fae8ce254dfc1344527e05301e43f37dea2df80`, with liblinkernsbypass from
 `aa3975893d83ef1bc84c321ec60c65fbf1287887`. Their licenses are in the source
 directories and in the APK.
+
+The movie-audio fallback vendors minimp3 at the revision recorded in
+[vendor/minimp3/SOURCE.txt](vendor/minimp3/SOURCE.txt), under CC0. Its license is
+included in the source and APK. The original game files are not included.
+
+For host-side tests, see [tests/README.md](tests/README.md).

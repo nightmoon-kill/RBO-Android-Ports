@@ -163,11 +163,47 @@ def patch_smali():
 .end method
 """
     game.write_text(game_code)
+    # Retain the original HP/SP implementation behind the expanded cheat menu.
+    cheat_dir = root / "decoded/smali_classes2/com/nakpaaiyaa/rbo"
+    cheat = cheat_dir / "CheatMenu.smali"
+    cheat_code = cheat.read_text()
+    cheat_code = replace_once(cheat_code, ".method private static show(Landroid/app/Activity;)V",
+                             ".method static show(Landroid/app/Activity;)V")
+    old = """.method static synthetic lambda$0(Landroid/app/Activity;Landroid/view/View;)V
+    .locals 0
+
+    .line 40
+    invoke-static {p0}, Lcom/nakpaaiyaa/rbo/CheatMenu;->show(Landroid/app/Activity;)V"""
+    new = """.method static synthetic lambda$0(Landroid/app/Activity;Landroid/view/View;)V
+    .locals 1
+    new-instance v0, Lcom/nakpaaiyaa/rbo/CheatVitalsAction;
+    invoke-direct {v0, p0}, Lcom/nakpaaiyaa/rbo/CheatVitalsAction;-><init>(Landroid/app/Activity;)V
+    invoke-static {p0, v0}, Lcom/nakpaaiyaa/rbo/PointCheats;->show(Landroid/app/Activity;Ljava/lang/Runnable;)V"""
+    cheat.write_text(replace_once(cheat_code, old, new))
+    (cheat_dir / "CheatVitalsAction.smali").write_text(""".class final Lcom/nakpaaiyaa/rbo/CheatVitalsAction;
+.super Ljava/lang/Object;
+.implements Ljava/lang/Runnable;
+.field private final activity:Landroid/app/Activity;
+.method constructor <init>(Landroid/app/Activity;)V
+    .locals 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lcom/nakpaaiyaa/rbo/CheatVitalsAction;->activity:Landroid/app/Activity;
+    return-void
+.end method
+.method public run()V
+    .locals 1
+    iget-object v0, p0, Lcom/nakpaaiyaa/rbo/CheatVitalsAction;->activity:Landroid/app/Activity;
+    invoke-static {v0}, Lcom/nakpaaiyaa/rbo/CheatMenu;->show(Landroid/app/Activity;)V
+    return-void
+.end method
+""")
+    import runpy
+    runpy.run_path(str(root / "generate_language.py"))["translate_smali"]()
 
 
 def patch_manifest(data):
-    for old, new in (("com.nakpaaiyaa.rbo.perftst", "com.nakpaaiyaa.rbo.vulk052"),
-                     ("0.5.2", "0.5.9")):
+    for old, new in (("com.nakpaaiyaa.rbo.perftst", "com.nakpaaiyaa.rbo.cmp0600"),
+                     ("0.5.2", "0.6.7")):
         old, new = old.encode("utf-16le"), new.encode("utf-16le")
         assert len(old) == len(new)
         data = replace_once(data, old, new)
@@ -186,7 +222,7 @@ def patch_manifest(data):
                 name, = unpack_from("<I", manifest, attr + 4)
                 if name < len(resource_ids) and resource_ids[name] == 0x0101021B:
                     assert unpack_from("<I", manifest, attr + 16) == (17,)
-                    pack_into("<I", manifest, attr + 16, 25)
+                    pack_into("<I", manifest, attr + 16, 33)
                     updated += 1
         offset += size
     assert offset == len(manifest) and updated == 1
@@ -210,7 +246,7 @@ def package():
             data = source.read(entry)
             if entry.filename == "AndroidManifest.xml":
                 data = patch_manifest(data)
-            if entry.filename == "classes.dex":
+            if entry.filename.startswith("classes") and entry.filename.endswith(".dex"):
                 data = dex.read(entry.filename)
             entry.extra = b""
             output.writestr(entry, data)
@@ -221,6 +257,7 @@ def package():
                 output.write(asset, f"assets/move-backgrounds/{asset.name}")
         for library in ("librbo_vulkan.so", "libadrenotools.so", "libhook_impl.so", "libmain_hook.so"):
             output.write(build / library, "lib/arm64-v8a/" + library, ZIP_STORED)
+        output.write(root / "vendor/minimp3/LICENSE", "assets/licenses/minimp3.txt")
         output.write(root / "vendor/libadrenotools/LICENSE", "assets/licenses/libadrenotools.txt")
         output.write(root / "vendor/libadrenotools/lib/linkernsbypass/LICENSE",
                      "assets/licenses/liblinkernsbypass.txt")

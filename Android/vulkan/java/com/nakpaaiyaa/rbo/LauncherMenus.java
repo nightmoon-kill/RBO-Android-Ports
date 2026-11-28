@@ -1,6 +1,7 @@
 package com.nakpaaiyaa.rbo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.view.View;
@@ -15,6 +16,7 @@ public final class LauncherMenus {
     private final LinearLayout root, main, options, patch, debugging;
     private final RendererSettings renderer;
     private LinearLayout current;
+    private Button language;
 
     private LauncherMenus(Activity activity, LinearLayout root) {
         this.activity = activity;
@@ -36,29 +38,35 @@ public final class LauncherMenus {
             String name = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0).versionName;
             version.setText("Version " + name);
         } catch (PackageManager.NameNotFoundException ignored) {
-            version.setText("Version 0.5.9");
+            version.setText("Version 0.6.7");
         }
         root.addView(version, root.indexOfChild(play));
 
-        play.setText("PLAY");
+        play.setText(AppLanguage.text("PLAY"));
         move(root, menus.main, play);
         menus.addLink("OPTIONS", menus.options);
         menus.addLink("PATCH", menus.patch);
         menus.addLink("DEBUGGING", menus.debugging);
 
-        controls.setText("CONTROL SETTINGS");
+        controls.setText(AppLanguage.text("CONTROL SETTINGS"));
         move(root, menus.options, controls, 1);
         move(root, menus.options, importGame);
+        menus.language = new Button(activity);
+        menus.language.setAllCaps(false);
+        menus.language.setOnClickListener(view -> menus.chooseLanguage());
+        menus.options.addView(menus.language, 2);
+        menus.refreshLanguage();
 
-        installThai.setText("Install Thai Language");
+        installThai.setText(AppLanguage.text("Install Thai Language"));
         ViewParent creditRow = installThai.getParent().getParent();
         if (creditRow instanceof View && creditRow.getParent() == root) {
             move(root, menus.patch, (View) creditRow);
         }
-        removeThai.setText("Remove Thai Language");
+        removeThai.setText(AppLanguage.text("Remove Thai Language"));
         move(root, menus.patch, removeThai);
         move(root, menus.patch, widescreen);
         move(root, menus.debugging, debugRow);
+        AppLanguage.refreshTree(root);
 
         menus.show(menus.main);
         return menus;
@@ -73,12 +81,12 @@ public final class LauncherMenus {
 
     private void addLink(String title, LinearLayout target) {
         Button link = new Button(activity);
-        link.setText(title);
+        link.setText(AppLanguage.text(title));
         link.setOnClickListener(view -> show(target));
         main.addView(link);
         Button back = new Button(activity);
-        back.setText("‹ " + title);
-        back.setContentDescription("Back to main menu");
+        back.setText(AppLanguage.text("‹ " + title));
+        back.setContentDescription(AppLanguage.text("Back to main menu"));
         back.setOnClickListener(view -> show(main));
         target.addView(back, 0);
     }
@@ -97,6 +105,23 @@ public final class LauncherMenus {
         if (current == main) return false;
         show(main);
         return true;
+    }
+
+    private void refreshLanguage() {
+        language.setText(AppLanguage.text("Language") + " · " + (AppLanguage.isThai() ? "THAI" : "ENG"));
+    }
+
+    private void chooseLanguage() {
+        new AlertDialog.Builder(activity).setTitle(AppLanguage.text("Language"))
+                .setSingleChoiceItems(new String[]{"ENG", "THAI"}, AppLanguage.isThai() ? 1 : 0,
+                        (dialog, selected) -> {
+                            AppLanguage.select(activity, selected == 1);
+                            AppLanguage.refreshTree(root);
+                            renderer.refresh();
+                            refreshLanguage();
+                            dialog.dismiss();
+                        })
+                .setNegativeButton(AppLanguage.text("Cancel"), null).show();
     }
 
     public boolean onActivityResult(int request, int result, Intent data) {

@@ -1,0 +1,3 @@
+https://github.com/lieff/minimp3
+Commit: 48e3a085f0e1a99446b34614e1e7f17f09dc2e82
+License: CC0-1.0 (see LICENSE)

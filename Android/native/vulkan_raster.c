@@ -7,6 +7,7 @@
 #include <time.h>
 
 #include "gpu_raster.h"
+#include "draw_batch.h"
 #include "vulkan_shaders.h"
 #ifdef RBO_VULKAN_DRIVERS
 #include "vulkan_dispatch.h"
@@ -79,6 +80,14 @@ static int recording, rendering, submitted, initialized, available, failed;
 static char error_message[192];
 static unsigned long waits, vertices, draws;
 static double wait_time_ms;
+static DrawBatch pending_draws;
+static unsigned long input_draws, readbacks, pipeline_builds;
+static double record_ms, readback_ms, pipeline_ms;
+static void emit_draw(const GpuState *state,const float *verts,int count);
+static void flush_draws(void){draw_batch_flush(&pending_draws,emit_draw);}
+static int batching_enabled=1;
+void vulkan_set_batching(int enabled){flush_draws();batching_enabled=!!enabled;}
+
 
 static double clock_ms(void) {
     struct timespec stamp;
@@ -183,6 +192,7 @@ static void end_pass(void) {
 }
 
 void gpu_submit(void) {
+    flush_draws();
     if (failed || !recording) return;
     end_pass();
     recording = 0;
@@ -268,6 +278,7 @@ static VkBufferImageCopy whole_image(const Image *image, VkDeviceSize offset) {
 }
 
 static void upload(Image *image, const void *pixels, unsigned pixel_bytes, int sampled) {
+    flush_draws();
     VkDeviceSize offset, bytes = (VkDeviceSize)image->width * image->height * pixel_bytes;
     if (!stage_data(pixels, bytes, &offset)) return;
     if (pixel_bytes == 1) {
@@ -378,8 +389,10 @@ static VkPipeline pipeline_for(const GpuState *state) {
         .pRasterizationState = &raster, .pMultisampleState = &samples, .pColorBlendState = &blend,
         .pDynamicState = &dynamic, .layout = pipeline_layout, .renderPass = render_pass
     };
+    double start_pipeline = clock_ms();
     if (!check(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &info, NULL, pipeline), "create draw pipeline"))
         return VK_NULL_HANDLE;
+    pipeline_ms += clock_ms()-start_pipeline; pipeline_builds++;
     return *pipeline;
 }
 
@@ -411,6 +424,13 @@ static VkDescriptorSet texture_set(Texture *texture, unsigned sampler) {
 
 void gpu_draw(const GpuState *state, const float *verts, int count) {
     if (failed || !framebuffer || count <= 0 || state->sw <= 0 || state->sh <= 0) return;
+    input_draws++;
+    if(!batching_enabled){emit_draw(state,verts,count);return;}
+    draw_batch_push(&pending_draws,state,verts,count,emit_draw);
+}
+static void emit_draw(const GpuState *state, const float *verts, int count) {
+    if (failed || !framebuffer || count <= 0 || state->sw <= 0 || state->sh <= 0) return;
+    double start_record = clock_ms();
     Texture *texture = state->tex_on ? &textures[state->tex_id] : &dummy;
     unsigned sampler = (state->point ? 0 : 3) + state->addr;
     VkPipeline pipeline = pipeline_for(state);
@@ -439,6 +459,7 @@ void gpu_draw(const GpuState *state, const float *verts, int count) {
     vkCmdDraw(command_buffer, (uint32_t)count, 1, 0, 0);
     vertices += (unsigned)count;
     draws++;
+    record_ms += clock_ms()-start_record;
 }
 
 void gpu_rt_set(int width, int height) {
@@ -465,6 +486,8 @@ void gpu_rt_upload(const uint32_t *argb, int width, int height) {
 }
 
 void gpu_rt_read(uint32_t *argb) {
+    flush_draws();
+    double start_readback = clock_ms();
     if (failed || !target.handle) return;
     VkDeviceSize bytes = (VkDeviceSize)target.width * target.height * 4;
     if (readback.size < bytes) {
@@ -486,7 +509,7 @@ void gpu_rt_read(uint32_t *argb) {
     vkCmdPipelineBarrier(command_buffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_HOST_BIT,
                          0, 0, NULL, 1, &visibility, 0, NULL);
     gpu_sync();
-    if (!failed) memcpy(argb, readback.mapped, (size_t)bytes);
+    if (!failed) { memcpy(argb, readback.mapped, (size_t)bytes); readbacks++; readback_ms += clock_ms()-start_readback; }
 }
 
 static void free_texture(Texture *texture) {
@@ -698,6 +721,8 @@ void vulkan_reset_initialization(void) {
     error_message[0] = '\0';
     waits = vertices = draws = 0;
     wait_time_ms = 0;
+    pending_draws.count=0; input_draws=readbacks=pipeline_builds=0;
+    record_ms=readback_ms=pipeline_ms=0;
 }
 #endif
 
@@ -750,4 +775,14 @@ void gpu_stats(unsigned long *syncs, double *wait_ms, unsigned long *verts, unsi
     if (wait_ms) *wait_ms = wait_time_ms;
     if (verts) *verts = vertices;
     if (runs) *runs = draws;
+}
+
+void vulkan_perf_report(char *out,int size) {
+    static unsigned long prev_input,prev_draws,prev_reads,prev_pipelines;
+    static double prev_record,prev_readback,prev_pipeline;
+    snprintf(out,(size_t)size,"[Vulkan perf] input_draws=%lu batches=%lu readbacks=%lu record_ms=%.2f readback_ms=%.2f pipelines=%lu pipeline_ms=%.2f\n",
+        input_draws-prev_input,draws-prev_draws,readbacks-prev_reads,record_ms-prev_record,
+        readback_ms-prev_readback,pipeline_builds-prev_pipelines,pipeline_ms-prev_pipeline);
+    prev_input=input_draws;prev_draws=draws;prev_reads=readbacks;prev_pipelines=pipeline_builds;
+    prev_record=record_ms;prev_readback=readback_ms;prev_pipeline=pipeline_ms;
 }

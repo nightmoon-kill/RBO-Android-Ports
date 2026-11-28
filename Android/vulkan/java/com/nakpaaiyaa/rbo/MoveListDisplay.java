@@ -55,7 +55,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
     private final Button stateButton;
     private final SaveStateMenu saveStates;
     private MovePresentation panel;
-    private MovePanel inline;
+    private CompanionPanel inline;
     private boolean listening;
 
     private MoveListDisplay(Activity game, FrameLayout gameFrame, Button touchButton, Button cheatButton,
@@ -111,7 +111,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
 
     private void showInline() {
         if (inline != null || (panel != null && panel.isShowing())) return;
-        MovePanel next = new MovePanel(game, () -> hideInline());
+        CompanionPanel next = new CompanionPanel(game, () -> hideInline());
         if (!((GameHost) game).setMoveListOpen(true)) return;
         inline = next;
         syncMovesButton();
@@ -281,13 +281,13 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
                 window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
             }
-            setContentView(new MovePanel(getContext(), null));
+            setContentView(new CompanionPanel(getContext(), null));
             if (window != null) window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
         }
     }
 
-    private static final class MovePanel extends FrameLayout {
+    static final class MovePanel extends FrameLayout {
         private final List<Move> moves = new ArrayList<>();
         private final SharedPreferences prefs;
         private int job;
@@ -297,6 +297,9 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
         private PortraitBackground background;
         private String shownPortrait;
         private LinearLayout entries;
+        private boolean followLive = true;
+        private int liveCode = -1;
+        private Button auto;
 
         MovePanel(Context context, Runnable close) {
             super(context);
@@ -323,6 +326,12 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
             count = label("", 11, 0xFFE0CBB4, false);
             heading.addView(count);
             selector.addView(heading, new LinearLayout.LayoutParams(0, -2, 1.25f));
+            auto = button("Auto", "Follow the active character", () -> {
+                followLive = true;
+                applyCharacter(liveCode);
+                refresh();
+            });
+            selector.addView(auto, new LinearLayout.LayoutParams(dp(46), -1));
             selector.addView(button("‹", "Previous class", () -> changeJob(-1)), new LinearLayout.LayoutParams(dp(37), -1));
             jobLabel = label("", 15, Color.WHITE, true);
             jobLabel.setGravity(Gravity.CENTER);
@@ -330,6 +339,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
             selector.addView(jobLabel, new LinearLayout.LayoutParams(0, -1, 1.4f));
             selector.addView(button("›", "Next class", () -> changeJob(1)), new LinearLayout.LayoutParams(dp(37), -1));
             variant = button("", "Switch character variant", () -> {
+                followLive = false;
                 female = !female;
                 refresh();
             });
@@ -355,8 +365,21 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
         }
 
         private void changeJob(int step) {
+            followLive = false;
             job = (job + step + CLASSES.length) % CLASSES.length;
             refresh();
+        }
+
+        void applyCharacter(int code) {
+            liveCode = code;
+            if (!followLive || code < 0 || code >= 14) return;
+            int next = CompanionData.MOVE_JOBS[code / 2];
+            boolean nextFemale = (code & 1) != 0;
+            if (job != next || female != nextFemale) {
+                job = next;
+                female = nextFemale;
+                refresh();
+            }
         }
 
         private void loadMoves() {
@@ -373,19 +396,21 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
         }
 
         private void refresh() {
+            auto.setText(AppLanguage.text("Auto") + (followLive ? " ●" : ""));
+            auto.setTextColor(followLive ? 0xFF8DE4CF : Color.WHITE);
             prefs.edit().putInt("class", job).putBoolean("female", female).apply();
             String role = CLASSES[job];
             String selected = female ? "F" : "M";
-            jobLabel.setText(role);
-            variant.setText(female ? "Female" : "Male");
-            variant.setContentDescription((female ? "Female" : "Male") + ". Switch character variant");
+            jobLabel.setText(AppLanguage.text(role));
+            variant.setText(AppLanguage.text(female ? "Female" : "Male"));
+            variant.setContentDescription(AppLanguage.text(female ? "Female" : "Male") + ". " + AppLanguage.text("Switch character variant"));
             List<Move> selectedMoves = new ArrayList<>();
             for (Move move : moves) {
                 if (role.equals(move.role) && ("-".equals(move.variant) || selected.equals(move.variant))) {
                     selectedMoves.add(move);
                 }
             }
-            count.setText(selectedMoves.size() + " ท่า");
+            count.setText(selectedMoves.size() + " " + AppLanguage.text("moves"));
             updateBackground(role);
             showGrid(selectedMoves);
         }
@@ -434,6 +459,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
                     .replace(" (airborne)", " · Air").replace("(airborne) ", "Air · ");
 
             TextView name = label(move.name, 16, Color.WHITE, true);
+            name.setText(move.name);
             fit(name, 7, 16);
             card.addView(name, new LinearLayout.LayoutParams(-1, 0, 1));
 
@@ -464,7 +490,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
 
         private Button button(String text, String description, Runnable action) {
             Button control = new Button(getContext());
-            control.setText(text);
+            control.setText(AppLanguage.text(text));
             control.setAllCaps(false);
             control.setMinWidth(0);
             control.setMinimumWidth(0);
@@ -472,7 +498,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
             control.setTextColor(Color.WHITE);
             control.setBackground(tile(0xFF342720, 0xFF6A5141));
             fit(control, 9, 14);
-            control.setContentDescription(description);
+            control.setContentDescription(AppLanguage.text(description));
             control.setFocusable(false);
             control.setOnClickListener(view -> action.run());
             return control;
@@ -480,7 +506,7 @@ public final class MoveListDisplay implements DisplayManager.DisplayListener {
 
         private TextView label(String text, int size, int color, boolean bold) {
             TextView view = new TextView(getContext());
-            view.setText(text);
+            view.setText(AppLanguage.text(text));
             view.setTextColor(color);
             view.setTextSize(size);
             view.setGravity(Gravity.CENTER_VERTICAL);

@@ -76,18 +76,18 @@ final class SaveStateMenu {
             }
             String detail = canLoad[i] ? dateFormat.format(new Date(time * 1000))
                     : slots[i].exists() ? "Unreadable" : "Empty";
-            labels[i] = "Slot " + (i + 1) + " · " + detail;
+            labels[i] = AppLanguage.text("Slot " + (i + 1) + " · " + detail);
         }
 
         dialog = new AlertDialog.Builder(game)
-                .setTitle("Save / Load State")
+                .setTitle(AppLanguage.text("Save / Load State"))
                 .setSingleChoiceItems(slotRows(labels, previews), selected, (window, slot) -> {
                     selected = slot;
                     dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setEnabled(canLoad[slot]);
                 })
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton("Save State", null)
-                .setNeutralButton("Load State", null)
+                .setPositiveButton(AppLanguage.text("Save State"), null)
+                .setNeutralButton(AppLanguage.text("Load State"), null)
                 .create();
         dialog.setOnDismissListener(window -> {
             capturing = false;
@@ -145,11 +145,11 @@ final class SaveStateMenu {
         int slot = selected;
         boolean saving = operation == SAVE;
         confirmation = new AlertDialog.Builder(game)
-                .setTitle(saving ? "Overwrite save state?" : "Load save state?")
-                .setMessage(label + "\n\n" + (saving ? "This replaces the state in this slot."
-                        : "Progress since this state will be lost."))
+                .setTitle(AppLanguage.text(saving ? "Overwrite save state?" : "Load save state?"))
+                .setMessage(AppLanguage.text(label + "\n\n" + (saving ? "This replaces the state in this slot."
+                        : "Progress since this state will be lost.")))
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(saving ? "Overwrite" : "Load State", (window, which) -> {
+                .setPositiveButton(AppLanguage.text(saving ? "Overwrite" : "Load State"), (window, which) -> {
                     if (saving) captureAndSave(file, slot);
                     else submit(operation, file, slot, null);
                 })
@@ -275,7 +275,7 @@ final class SaveStateMenu {
 
     private void showMessage(String message) {
         if (!game.isFinishing() && !game.isDestroyed()) {
-            Toast.makeText(game, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(game, AppLanguage.text(message), Toast.LENGTH_LONG).show();
         }
     }
 

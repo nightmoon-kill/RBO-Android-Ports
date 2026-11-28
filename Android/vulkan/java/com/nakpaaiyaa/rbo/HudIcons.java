@@ -25,7 +25,7 @@ final class HudIcons {
 
     static void apply(Button button, Icon icon, String description) {
         button.setText(null);
-        button.setContentDescription(description);
+        button.setContentDescription(AppLanguage.text(description));
         button.setStateListAnimator(null);
         button.setElevation(0);
         button.setAlpha(1);

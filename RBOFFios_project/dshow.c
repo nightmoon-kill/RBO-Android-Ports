@@ -10,6 +10,10 @@
 #include "dxshared.h"
 #include "state.h"
 #include "pl_mpeg.h"
+#ifdef RBO_MOVIE_LAYER1
+#include "movie_audio.h"
+static MovieAudio *layer1_audio;
+#endif
 #include <string.h>
 #include <strings.h>
 #include <math.h>
@@ -67,6 +71,9 @@ static int is_movie_path(const char *p){
     return 0;
 }
 static void movie_close(void){
+#ifdef RBO_MOVIE_LAYER1
+    movie_audio_close(layer1_audio); layer1_audio=NULL;
+#endif
     if(mv.plm){ plm_destroy(mv.plm); mv.plm=NULL; }
     free(mv.bgra); mv.bgra=NULL; free(mv.rs); mv.rs=NULL; mv.rs_cap=0;
     mv.open=mv.running=mv.paused=mv.ended=0; mv.ev_pending=0; mv.last_us=0; mv.played=0; mv.frames=0; dx_movie_audio_clear();
@@ -108,6 +115,13 @@ static int movie_open(const char *gpath){
     plm_set_loop(mv.plm,0); plm_set_audio_enabled(mv.plm,plm_get_num_audio_streams(mv.plm)>0); plm_set_audio_stream(mv.plm,0);
     plm_set_audio_lead_time(mv.plm,0.1);
     plm_set_video_decode_callback(mv.plm,on_video,NULL); plm_set_audio_decode_callback(mv.plm,on_audio,NULL);
+#ifdef RBO_MOVIE_LAYER1
+    if (mv.rate == 0 && plm_get_num_audio_streams(mv.plm)>0) {
+        layer1_audio=movie_audio_open(host);
+        plm_set_audio_enabled(mv.plm,0);
+        fprintf(stderr,"[Movie audio] MPEG Layer I fallback=%s\n",layer1_audio?"ready":"unavailable");
+    }
+#endif
     mv.open=1; mv.rs_pos=0; mv.rs_last[0]=mv.rs_last[1]=0;
     fprintf(stderr,"[Movie] opened %s: %dx%d %.2f fps %.1fs audio=%d Hz\n",host,mv.w,mv.h,plm_get_framerate(mv.plm),mv.duration,mv.rate);
     return 1;
@@ -123,6 +137,9 @@ void dshow_movie_pump(void){
     if(dt<=0) return; if(dt>0.1) dt=0.1;     /* after a stall do not fast-forward through the movie */
     plm_decode(mv.plm,dt);
     mv.played+=dt;
+#ifdef RBO_MOVIE_LAYER1
+    movie_audio_pump(layer1_audio,plm_get_time(mv.plm)+0.1,(float)mv.gain,dx_movie_audio_push);
+#endif
     ds_tick();
     /* watchdog: a movie that never reports its end (damaged tail, no decodable video, duration unknown) would leave the game
        waiting for EC_COMPLETE on a black screen forever - end it by force */
@@ -202,6 +219,9 @@ static void mpos_get_Duration(void){ wr_double(A(1),mv.open?mv.duration:0.0); RE
 static void mpos_get_CurrentPosition(void){ wr_double(A(1),mv.open?movie_time():0.0); RET(0); }
 static void movie_rewind(void){
     if(!mv.open) return;
+#ifdef RBO_MOVIE_LAYER1
+    movie_audio_rewind(layer1_audio);
+#endif
     plm_rewind(mv.plm); mv.ended=0; mv.ev_pending=0; mv.last_us=0; mv.played=0; mv.frames=0; mv.rs_pos=0; dx_movie_audio_clear();
 }
 static void mpos_put_CurrentPosition(void){   /* (this, double) - only "back to the start" is supported */
